@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="#000" viewBox="0 0 36 36">
+  <path d="M18,3.2L5,25.6H31L18,3.2z M18,10.4L24.7,22H11.3L18,10.4z" />
+  <rect x="5" y="29.2" width="25.9" height="3.6" />
+  <style>
+    @media (prefers-color-scheme:dark){:root{filter:invert(100%)}}
+  </style>
+</svg>

@@ -1,0 +1,43 @@
+---
+import { Picture } from '@astrojs/image/components';
+---
+
+<section class="flex justify-center">
+  <div
+    class="flex flex-col min-h-screen max-w-screen-2xl pt-36 px-0 justify-end sm:pt-32 sm:px-16 lg:justify-center lg:pt-0 lg:flex-row"
+  >
+    <div
+      class="flex flex-col px-8 place-content-center items-center max-w-2xl tracking-wide gap-y-8 text-white sm:px-0"
+    >
+      <h1 class="text-left text-5xl font-light md:text-6xl">
+        Hi, I am
+        <br />
+        <span class="font-normal"> Muhammad Farhan Abiyyullah</span>
+      </h1>
+      <p class="text-2xl font-light md:text-3xl">
+        — A software engineer interested in building a high-performance website*
+        with a good user experience
+      </p>
+      <p class="self-start text-lg font-light md:text-xl">
+        * Check out
+        <a
+          href="https://pagespeed.web.dev/report?url=https%3A%2F%2Ffarhanabi.com%2F"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline hover:decoration-2"
+        >
+          this page's performance score
+        </a>
+      </p>
+    </div>
+    <Picture
+      src="/images/astronaut.webp"
+      alt="An astronaut sculpture"
+      widths={[384, 682, 1400]}
+      sizes="(max-width: 800px) 100vw, 800px"
+      aspectRatio={1}
+      loading="eager"
+      class="self-end"
+    />
+  </div>
+</section>
