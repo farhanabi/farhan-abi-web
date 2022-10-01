@@ -13,15 +13,18 @@
   },
   "dependencies": {
     "@astrojs/image": "^0.7.0",
+    "@astrojs/mdx": "^0.11.1",
     "@astrojs/partytown": "^1.0.0",
     "@astrojs/preact": "^1.1.0",
     "@astrojs/tailwind": "^1.0.0",
     "@headlessui/react": "^1.7.2",
     "@heroicons/react": "^2.0.11",
     "astro": "^1.2.1",
+    "mdast-util-to-string": "^3.1.0",
     "preact": "^10.6.5",
     "react": "npm:@preact/compat",
-    "react-dom": "npm:@preact/compat"
+    "react-dom": "npm:@preact/compat",
+    "reading-time": "^1.5.0"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^5.36.2",

@@ -1,0 +1,56 @@
+---
+const posts = await Astro.glob('/**/*.mdx');
+---
+
+<section id="blog" class="bg-neutral-900 flex justify-center">
+  <div
+    class="flex flex-col max-w-screen-2xl px-0 py-16 justify-center sm:px-16 lg:justify-center lg:flex-row"
+  >
+    <div
+      class="flex flex-col px-8 place-content-center items-start tracking-wide gap-y-8 text-white sm:px-0"
+    >
+      <h2 class="text-left text-5xl font-light md:text-6xl">Blog</h2>
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:sm:grid-cols-3">
+        {
+          posts.map(
+            ({
+              frontmatter: {
+                title,
+                description,
+                image,
+                imageAlt,
+                minutesRead,
+                publishedAt,
+              },
+              url,
+            }) => (
+              <a href={url} class="no-underline">
+                <div class="relative h-full p-8 bg-neutral-600 rounded-2xl overflow-hidden lg:p-16">
+                  <div class="absolute inset-0 filter mix-blend-multiply">
+                    <img
+                      src={image}
+                      alt={imageAlt ?? title}
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div class="relative flex flex-col justify-between gap-y-8 no-underline">
+                    <div class="flex flex-col gap-y-2">
+                      <h3 class="text-3xl">{title}</h3>
+                      <p class="text-lg">{description}</p>
+                    </div>
+                    <p class="font-light">
+                      {[
+                        publishedAt ? `Published at ${publishedAt}` : '',
+                        minutesRead ? `${minutesRead}` : '',
+                      ].join(` • `)}
+                    </p>
+                  </div>
+                </div>
+              </a>
+            )
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: 'Inter';
   src: url('/fonts/Inter-Regular.ttf') format('truetype');
@@ -12,7 +16,7 @@
 
 @font-face {
   font-family: 'Inter';
-  font-weight: 500;
+  font-weight: 600;
   src: url('/fonts/Inter-SemiBold.ttf') format('truetype');
   font-display: swap;
 }
@@ -29,6 +33,25 @@
   font-display: swap;
 }
 
-body {
-  font-family: Inter, sans-serif;
+@layer base {
+  body {
+    font-family: Inter, sans-serif;
+    color: white;
+  }
+
+  h1 {
+    @apply text-6xl font-bold;
+  }
+
+  h2 {
+    @apply text-4xl font-semibold;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold;
+  }
+
+  a {
+    @apply underline hover:decoration-2;
+  }
 }
