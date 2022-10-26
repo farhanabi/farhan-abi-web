@@ -15,11 +15,9 @@ const { title, description, image } = Astro.props;
 <html lang="en">
   <head>
     <Metadata title={title} description={description} image={image} />
-    <script
-      type="text/partytown"
-      src="https://www.googletagmanager.com/gtag/js?id=G-0P6H9VVVB1"
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-0P6H9VVVB1"
     ></script>
-    <script type="text/partytown">
+    <script defer>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);

@@ -13,7 +13,7 @@ const posts = (await Astro.glob('/**/*.mdx')).sort((a, b) =>
     <div
       class="flex flex-col px-8 place-content-center items-start tracking-wide gap-y-8 text-white sm:px-0"
     >
-      <h2 class="text-left text-5xl font-light md:text-6xl">Blog</h2>
+      <h2 class="text-left text-4xl md:text-5xl">Blog</h2>
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:sm:grid-cols-3">
         {
           posts.map(
