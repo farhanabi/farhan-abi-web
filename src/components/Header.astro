@@ -4,7 +4,7 @@ import HeaderLink from './HeaderLink.astro';
 
 <header class="fixed w-full bg-black z-50">
   <div
-    class="flex flex-row max-w-screen-2xl mx-auto py-6 px-8 gap-x-8 items-center sm:px-16 sm:py-8"
+    class="flex flex-row max-w-screen-2xl mx-auto py-6 px-8 gap-x-8 items-center justify-between sm:px-16 sm:py-8 lg:justify-start"
   >
     <a href="/" class="flex-shrink-0 flex items-center">
       <img
@@ -14,9 +14,8 @@ import HeaderLink from './HeaderLink.astro';
         width={36}
       />
     </a>
-    <nav class="flex gap-x-4">
-      <!-- <HeaderLink href="/blog">Blog</HeaderLink> -->
-      <!-- <HeaderLink href="/about">About</HeaderLink> -->
+    <nav class="flex gap-x-4 items-center">
+      <HeaderLink href="/contact">Contact</HeaderLink>
     </nav>
   </div>
 </header>

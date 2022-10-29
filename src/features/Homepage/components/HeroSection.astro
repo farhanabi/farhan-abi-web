@@ -1,5 +1,6 @@
 ---
 import { Picture } from '@astrojs/image/components';
+import Link from '../../../components/Link.astro';
 ---
 
 <section class="flex justify-center">
@@ -22,13 +23,13 @@ import { Picture } from '@astrojs/image/components';
       </p>
       <p class="self-start text-lg font-light md:text-xl">
         * Check out
-        <a
+        <Link
           href="https://pagespeed.web.dev/report?url=https%3A%2F%2Ffarhanabi.com%2F"
           target="_blank"
           rel="noopener noreferrer"
         >
           this page's performance score
-        </a>
+        </Link>
       </p>
     </div>
     <Picture
