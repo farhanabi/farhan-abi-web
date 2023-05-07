@@ -1,0 +1,418 @@
+---
+import { Image } from '@astrojs/image/components';
+import Layout from '../../../layouts/roadtrip.astro';
+---
+
+<head>
+  <style>
+    :global(#scrollContainer) {
+      height: 225vh;
+    }
+    @media (max-width: 768px) {
+      :global(#scrollContainer) {
+        height: 350vh;
+      }
+    }
+  </style>
+</head>
+
+<Layout
+  title="New Zealand Road Trip - Day 7 | Muhammad Farhan Abiyyullah"
+  description="Day 7 of Farhan Abi's road trip in New Zealand, exploring the outdoors and scenic drives."
+>
+  <div class="relative h-full w-full">
+    <div id="map" class="fixed w-full h-screen"></div>
+    <div
+      id="scrollContainer"
+      class="relative h-max w-full flex flex-col py-36 md:py-48 md:flex-row"
+    >
+      <div
+        id="story"
+        class="absolute text-white min-h-max h-full w-full top-0 m-auto px-8 py-36 bg-black bg-opacity-60 text-lg z-10 md:bg-opacity-70 md:w-2/3 md:mb-0 md:py-48 lg:w-1/2 xl:px-32"
+      >
+        <div class="flex flex-col min-h-max">
+          <h1 class="text-4xl font-bold mb-4">
+            New Zealand Road Trip <br class="hidden sm:block" />- Day #7
+          </h1>
+          <h2 class="text-2xl my-4 space-y-2">
+            Fortrose - Bluff - Invercargill - Te Anau - Milford Sound (~399km)
+          </h2>
+          <p class="mb-4">
+            I woke up to sunny skies but shivered as the temperature read a mere
+            6 degrees Celsius. I guess it was the strong southern wind sweeping
+            through the camp that made it feel extra chilly for a tropical
+            person like me.
+          </p>
+
+          <p class="mb-4">
+            We began our day heading south to Bluff, the southernmost town in
+            New Zealand, in hopes of enjoying oysters for brunch. Unfortunately,
+            it wasn't the season for oysters, and the restaurant directed us to
+            a seafood place in Invercargill instead. So off we went, fueled by
+            the promise of good food.
+          </p>
+
+          <p class="mb-4">
+            After savoring oysters in Invercargill, we drove towards Te Anau and
+            continued straight to Milford Sound. I have to say, the Te Anau -
+            Milford Sound route was my favorite part of this road trip. The best
+            part? I didn't take any pictures because the stunning sights
+            completely captivated me. But trust me, it was unbelievably
+            beautiful.
+          </p>
+
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-7/milford-sound.jpg"
+              alt="Milford Sound"
+              loading="lazy"
+              width={1800}
+              height={2512}
+            />
+            <figcaption class="text-sm">
+              Fig. 1 &mdash; The only picture I managed to snap that day:
+              Milford Sound's majestic cliff in a portrait orientation to extend
+              this day's narrative.
+            </figcaption>
+          </figure>
+
+          <p class="mb-4">
+            We arrived at Milford Sound a bit late, around 5 PM, and found that
+            there were no more cruises for the day. So, we had to wait until the
+            next day to hop on one. In the meantime, we drove about 42 km to the
+            nearest campground called Cascade Creek and set up camp for the
+            night there.
+          </p>
+          <div class="flex flex-col w-full gap-y-16 py-4 md:py-16">
+            <a href="/travel/NZ/day-6">
+              <div class="flex flex-col items-start">
+                <span class="text-2xl font-bold"
+                  >Previous:<br class="block sm:hidden" /> Day #6</span
+                >
+                <span class="text-lg">
+                  Dunedin - Nugget Point - Slope Point - Fortrose
+                </span>
+              </div>
+            </a>
+            <!-- <a href="/travel/NZ/day-8">
+              <div class="flex flex-col items-end text-right">
+                <span class="text-2xl font-bold"
+                  >Next:<br class="block sm:hidden" /> Day #8</span
+                >
+                <span class="text-lg">
+                  Motukarara - Christchurch - Lake Tekapo
+                </span>
+              </div>
+            </a> -->
+          </div>
+        </div>
+      </div>
+      <!-- The map container -->
+      <div id="map" class="w-full h-screen md:w-2/3 lg:w-1/2"></div>
+    </div>
+  </div>
+  <script is:inline src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+  ></script>
+  <script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+  <script is:inline>
+    const calculateXOffset = () => {
+      const minWidthForOffset = 767;
+      const largeScreenWidthOffset = 0.25;
+      return window.innerWidth > minWidthForOffset ? largeScreenWidthOffset : 0;
+    };
+
+    const xOffset = calculateXOffset();
+
+    // Set the initial map view coordinates
+    const initialMapViewCoordinates = [
+      -46.57494039289994,
+      168.7965949584001 - 2.5 * xOffset,
+    ];
+
+    // Initialize the map with custom options
+    const map = L.map('map', {
+      attributionControl: false,
+      zoomControl: false,
+    }).setView(initialMapViewCoordinates, 9);
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 9,
+      className: 'map-tiles',
+    }).addTo(map);
+
+    // Replace the coordinates in the roadTripPath array with the coordinates of your road trip
+    const roadTripPoints = [
+      {
+        coordinates: [-44.84915082299131, 168.38755949475447],
+        name: 'Glenorchy',
+      },
+      { coordinates: [-44.85649542856309, 168.3913227584356] },
+      { coordinates: [-44.86133374720947, 168.40314663238325] },
+      { coordinates: [-44.87199941002272, 168.40092114310224] },
+      { coordinates: [-44.88771755993806, 168.40176894854264] },
+      { coordinates: [-44.90678543740065, 168.4180892032673] },
+      { coordinates: [-44.91339015640545, 168.4189370087088] },
+      { coordinates: [-44.922845591522425, 168.42561347655186] },
+      { coordinates: [-44.927947878304415, 168.42518957383166] },
+      { coordinates: [-44.953847064813864, 168.43766184065285] },
+      { coordinates: [-44.989969284281806, 168.43140920856277] },
+      { coordinates: [-45.00727923982126, 168.44424249083374] },
+      { coordinates: [-45.024214514565216, 168.43971884210282] },
+      { coordinates: [-45.078780904714684, 168.46736115572978] },
+      { coordinates: [-45.07119244391596, 168.49905209219466] },
+      { coordinates: [-45.06132131783282, 168.5700028302969] },
+      { coordinates: [-45.05392578293604, 168.6162214035406] },
+      { coordinates: [-45.04770469000853, 168.62228620012965] },
+      { coordinates: [-45.03312744512554, 168.65748009777548] },
+      { coordinates: [-45.03284475422727, 168.65730728515524] },
+      {
+        coordinates: [-45.030179128760786, 168.66147255549666],
+        name: 'Queenstown',
+      },
+      { coordinates: [-45.03395875519056, 168.66697149445955] },
+      { coordinates: [-45.03380256587407, 168.68067447317824] },
+      { coordinates: [-45.028027029878274, 168.68811498499332] },
+      { coordinates: [-45.016479956358474, 168.7190822885198] },
+      { coordinates: [-45.015742510562454, 168.73154746143507] },
+      { coordinates: [-45.02958941875281, 168.7335143250398] },
+      { coordinates: [-45.038891088279414, 168.74454109212604] },
+      { coordinates: [-45.03838803919983, 168.75269420227912] },
+      {
+        coordinates: [-45.08592964105076, 168.7566386962092],
+        name: 'NZONE Skydive Dropzone',
+      },
+      { coordinates: [-45.03838803919983, 168.75269420227912] },
+      { coordinates: [-45.038891088279414, 168.74454109212604] },
+      { coordinates: [-45.02958941875281, 168.7335143250398] },
+      { coordinates: [-45.015742510562454, 168.73154746143507] },
+      { coordinates: [-45.00117936330545, 168.7584691580262] },
+      { coordinates: [-44.99408781751489, 168.79751363149805] },
+      { coordinates: [-44.99503340766252, 168.8043330429606] },
+      { coordinates: [-44.979902092972, 168.82505870524878] },
+      { coordinates: [-44.97782122483532, 168.85340606270094] },
+      { coordinates: [-45.0095698484765, 168.8876635189631] },
+      { coordinates: [-45.011996687672145, 168.92313504294202] },
+      { coordinates: [-45.03717962595526, 168.9935508504308] },
+      { coordinates: [-45.03647042875777, 168.99834679736932] },
+      { coordinates: [-45.04620280761937, 169.0297421031194] },
+      { coordinates: [-45.05581455717867, 169.0297421031194] },
+      { coordinates: [-45.05942847484908, 169.042897529527] },
+      { coordinates: [-45.053868506903974, 169.0458209576176] },
+      { coordinates: [-45.03400706541779, 169.03772531059752] },
+      { coordinates: [-45.028563826463525, 169.04497766103913] },
+      { coordinates: [-45.02375586412957, 169.04435924355843] },
+      { coordinates: [-45.01572138007666, 169.06195912043214] },
+      { coordinates: [-45.001005104740834, 169.07039186210235] },
+      { coordinates: [-45.03059417164832, 169.11369571687655] },
+      { coordinates: [-45.05873131277354, 169.13863444896415] },
+      { coordinates: [-45.05483089104316, 169.16720112295664] },
+      { coordinates: [-45.04063779086139, 169.1776100773892] },
+      { coordinates: [-45.03059078625285, 169.19778348708212] },
+      { coordinates: [-45.010408560948854, 169.2103587472665] },
+      { coordinates: [-44.988678118146396, 169.23047734210672] },
+      { coordinates: [-44.81574530674168, 169.3439859830478] },
+      { coordinates: [-44.76456958034063, 169.32763654345908] },
+      { coordinates: [-44.7345958992917, 169.25949194575534] },
+      { coordinates: [-44.701126470639174, 169.19309950944887] },
+      { coordinates: [-44.69671783000334, 169.1712748803644] },
+      { coordinates: [-44.69397357527052, 169.13631608953625], name: 'Wanaka' },
+      { coordinates: [-44.69671783000334, 169.1712748803644] },
+      { coordinates: [-44.68350397175511, 169.18951846856044] },
+      { coordinates: [-44.66203392549844, 169.21049104736008] },
+      { coordinates: [-44.60846901523775, 169.24770047939995] },
+      { coordinates: [-44.593720870313135, 169.24978943025675] },
+      { coordinates: [-44.54765942989008, 169.2394935600998] },
+      { coordinates: [-44.523880982499556, 169.25061309985492] },
+      { coordinates: [-44.49304261753653, 169.2460829169917] },
+      { coordinates: [-44.48775440252942, 169.2489657606319] },
+      { coordinates: [-44.466008924841766, 169.24731842140648] },
+      { coordinates: [-44.43278735851409, 169.18348402651603] },
+      { coordinates: [-44.38246115726403, 169.18648381957348] },
+      { coordinates: [-44.354787326924466, 169.17042226214943] },
+      { coordinates: [-44.27023968660432, 169.2005072737046] },
+      { coordinates: [-44.16129584182067, 169.2815491492968] },
+      { coordinates: [-44.074963524305076, 169.38821436391763] },
+      { coordinates: [-44.045664688342846, 169.38491968547436] },
+      { coordinates: [-44.03234224296983, 169.3622687711584] },
+      { coordinates: [-43.976731112040895, 169.42434121432535] },
+      { coordinates: [-43.97270050341222, 169.38725747672075] },
+      { coordinates: [-43.954000458436376, 169.36211546405545] },
+      { coordinates: [-43.95701699285997, 169.31769790834673] },
+      { coordinates: [-43.94008458451163, 169.2850132918817] },
+      { coordinates: [-43.971927603273706, 169.21955859925265] },
+      { coordinates: [-43.95847430469891, 169.1522446656889] },
+      { coordinates: [-43.94298172946877, 169.1450715487] },
+      { coordinates: [-43.925978285856985, 169.08918101207152] },
+      { coordinates: [-43.8906644753284, 169.0488322289455] },
+      { coordinates: [-43.85800524252862, 169.04446305289227] },
+      { coordinates: [-43.85189136235659, 169.0584631389972], name: 'Haast' },
+      { coordinates: [-43.8370129516517, 169.05866504361308] },
+      { coordinates: [-43.82251451014626, 169.06506484756878] },
+      { coordinates: [-43.791496852221414, 169.11559490536868] },
+      { coordinates: [-43.78877542832603, 169.12519105288197] },
+      { coordinates: [-43.78407449518768, 169.12507681303063] },
+      { coordinates: [-43.76223657918883, 169.1469655607237] },
+      { coordinates: [-43.71403063820905, 169.22886261410278] },
+      { coordinates: [-43.72987585922103, 169.24687824385606] },
+      { coordinates: [-43.71725932905917, 169.26768048556826] },
+      { coordinates: [-43.73295675935076, 169.3027344953466] },
+      { coordinates: [-43.76543576719911, 169.3300602392097] },
+      { coordinates: [-43.76711523645637, 169.3387812212992] },
+      { coordinates: [-43.76977429967834, 169.3393626201052] },
+      { coordinates: [-43.77173353377861, 169.36029297712008] },
+      { coordinates: [-43.76571568201652, 169.36823876080166] },
+      { coordinates: [-43.76487593363483, 169.3746341476673] },
+      { coordinates: [-43.75101838319456, 169.38645592336377] },
+      { coordinates: [-43.70586463890438, 169.43669453802784] },
+      { coordinates: [-43.71216867403828, 169.49716001384866] },
+      { coordinates: [-43.657103841182106, 169.58442728211676] },
+      { coordinates: [-43.64263299010222, 169.58207749445] },
+      { coordinates: [-43.63830409820159, 169.5882166470924] },
+      { coordinates: [-43.60844903923573, 169.5896333746252] },
+      { coordinates: [-43.59902407643659, 169.59502036508684] },
+      { coordinates: [-43.580313020041075, 169.62855328248492] },
+      { coordinates: [-43.57811705207407, 169.6581449169885] },
+      { coordinates: [-43.582299779189206, 169.6675276303677] },
+      { coordinates: [-43.5720160933285, 169.68008539042177] },
+      { coordinates: [-43.56156181447181, 169.68716713312378] },
+      { coordinates: [-43.56442752874895, 169.77443679282334] },
+      { coordinates: [-43.57550092603614, 169.8039374840821] },
+      { coordinates: [-43.54330517475612, 169.83521532541664] },
+      { coordinates: [-43.53377193258645, 169.83557075543177] },
+      { coordinates: [-43.518567158138275, 169.86649316675116] },
+      { coordinates: [-43.48788824029303, 169.87466805705873] },
+      { coordinates: [-43.49881398467367, 169.96697387983545] },
+      { coordinates: [-43.47889539547697, 170.00698826695023] },
+      { coordinates: [-43.46433865429861, 170.01795145501168] },
+      { coordinates: [-43.44790311817231, 170.05799512631862] },
+      { coordinates: [-43.44943302374955, 170.05909305643416] },
+      { coordinates: [-43.44564765324365, 170.05828525701915] },
+      { coordinates: [-43.44308839531038, 170.0690803946565] },
+      { coordinates: [-43.44525422128029, 170.0676669269709] },
+      { coordinates: [-43.42958416420358, 170.08747235120833] },
+      { coordinates: [-43.40499183348745, 170.09702697603115] },
+      { coordinates: [-43.410122346492614, 170.10263512538367] },
+      { coordinates: [-43.405595445807535, 170.10159657920727] },
+      { coordinates: [-43.408915206057, 170.11032036708895] },
+      { coordinates: [-43.40408640372999, 170.12236750273513] },
+      { coordinates: [-43.385371158937026, 170.1300527444404] },
+      { coordinates: [-43.38348279919711, 170.1637797650878] },
+      { coordinates: [-43.39359610140327, 170.17561919149867] },
+      {
+        coordinates: [-43.38833916527035, 170.18173946674162],
+        name: 'Franz Josef / Waiau',
+      },
+    ];
+
+    // Extract only the coordinates for drawing the path
+    const roadTripPath = roadTripPoints.map((point) => point.coordinates);
+
+    // Create an SVG layer for the route
+    const svgLayer = L.svg().addTo(map);
+    const svg = d3.select(svgLayer._container);
+    const line = d3
+      .line()
+      .curve(d3.curveCatmullRom.alpha(0.5))
+      .x((d) => map.latLngToLayerPoint(d).x)
+      .y((d) => map.latLngToLayerPoint(d).y);
+
+    // Add the path to the SVG layer
+    const path = svg
+      .append('path')
+      .datum(roadTripPath)
+      .attr('d', line)
+      .attr('stroke', '#DDDDDD')
+      .attr('stroke-width', 5)
+      .attr('stroke-linecap', 'round')
+      .attr('fill', 'none');
+
+    // Update the path as the map moves
+    map.on('moveend', updatePath);
+    updatePath();
+
+    function updatePath() {
+      const updatedPath = roadTripPath.map((latlng) => L.latLng(latlng));
+      path.datum(updatedPath).attr('d', line);
+    }
+
+    // Draw the route as you scroll
+    const scrollContainer = document.getElementById('scrollContainer');
+    const zoomLevel = 9; // Set your desired zoom level here
+
+    const carIcon = L.icon({
+      iconUrl:
+        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white"><rect x="3" y="11" width="18" height="10" rx="2" ry="2"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/><path d="M5.20711 9.5C5.84692 8.34171 7.1005 7.5 8.5 7.5H15.5C16.8995 7.5 18.1531 8.34171 18.7929 9.5"/></svg>',
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+    });
+
+    const carMarker = L.marker(roadTripPath[0], { icon: carIcon }).addTo(map);
+
+    let activeDot = null;
+    let activePopup = null;
+
+    // Update the scroll event listener
+    window.addEventListener('scroll', () => {
+      const scrollPercentage =
+        window.scrollY / (scrollContainer.scrollHeight - window.innerHeight);
+      const newPathLength = scrollPercentage * path.node().getTotalLength();
+      path.style(
+        'stroke-dasharray',
+        `${newPathLength}, ${path.node().getTotalLength()}`
+      );
+
+      // Get the current point on the path based on scroll percentage
+      const currentPoint = path.node().getPointAtLength(newPathLength);
+
+      // Convert the current point to latitude and longitude coordinates
+      const currentLatLng = map.layerPointToLatLng([
+        currentPoint.x,
+        currentPoint.y,
+      ]);
+
+      // Find the closest point to the current position
+      const closestPoint = roadTripPoints
+        .filter((point) => point.name)
+        .reduce((prev, curr) => {
+          const prevDistance = map.distance(prev.coordinates, currentLatLng);
+          const currDistance = map.distance(curr.coordinates, currentLatLng);
+          return currDistance < prevDistance ? curr : prev;
+        });
+
+      // Close the active popup and open the popup for the closest point
+      if (activePopup) {
+        activePopup.closePopup();
+      }
+      if (closestPoint.name) {
+        activePopup = L.popup({
+          closeButton: false,
+        })
+          .setLatLng(closestPoint.coordinates)
+          .setContent(`<b>${closestPoint.name}</b>`)
+          .openOn(map);
+
+        activeDot = L.circleMarker(closestPoint.coordinates, {
+          color: '#DDDDDD',
+          fillColor: '#DDDDDD',
+          fillOpacity: 1,
+          radius: 5,
+        }).addTo(map);
+      }
+
+      // Get the x coordinate of the new center
+      const centerX = currentPoint.x - xOffset * window.innerWidth;
+
+      // Convert the new center to latitude and longitude coordinates
+      const centerLatLng = map.layerPointToLatLng([centerX, currentPoint.y]);
+
+      // Set the map view with the constant zoom level
+      map.setView(centerLatLng, zoomLevel, { animate: false });
+
+      // Update the car marker position
+      carMarker.setLatLng(currentLatLng);
+    });
+  </script>
+</Layout>

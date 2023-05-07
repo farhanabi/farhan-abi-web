@@ -1,0 +1,409 @@
+---
+import { Image } from '@astrojs/image/components';
+import Layout from '../../../layouts/roadtrip.astro';
+---
+
+<head>
+  <style>
+    :global(#scrollContainer) {
+      height: 550vh;
+    }
+    @media (max-width: 768px) {
+      :global(#scrollContainer) {
+        height: 550vh;
+      }
+    }
+  </style>
+</head>
+
+<Layout
+  title="New Zealand Road Trip - Day 6 | Muhammad Farhan Abiyyullah"
+  description="Day 6 of Farhan Abi's road trip in New Zealand, exploring the outdoors and scenic drives."
+>
+  <div class="relative h-full w-full">
+    <div id="map" class="fixed w-full h-screen"></div>
+    <div
+      id="scrollContainer"
+      class="relative h-max w-full flex flex-col py-36 md:py-48 md:flex-row"
+    >
+      <div
+        id="story"
+        class="absolute text-white min-h-max h-full w-full top-0 m-auto px-8 py-36 bg-black bg-opacity-60 text-lg z-10 md:bg-opacity-70 md:w-2/3 md:mb-0 md:py-48 lg:w-1/2 xl:px-32"
+      >
+        <div class="flex flex-col min-h-max">
+          <h1 class="text-4xl font-bold mb-4">
+            New Zealand Road Trip <br class="hidden sm:block" />- Day #6
+          </h1>
+          <h2 class="text-2xl my-4 space-y-2">
+            Dunedin - Royal Albatross Centre - Nugget Point - Slope Point -
+            Fortrose (~300km)
+          </h2>
+          <p class="mb-4">
+            Marsha picked me up at my hostel, and then I took over the driving
+            duties to head towards the Royal Albatross Centre in the morning. We
+            didn't know what to expect, but a friend had highly recommended it
+            as a must-see spot in Dunedin.
+          </p>
+
+          <p class="mb-4">
+            Upon arrival, we were greeted by a storm and fierce winds that made
+            us reconsider our albatross tour plans. The penguin tour was off the
+            table too since it took place at night, and we hadn't realized that
+            sooner. Sometimes, life teaches you lessons the hard way!
+          </p>
+
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-6/royal-albatross-centre.jpg"
+              alt="Royal Albatross Centre"
+              loading="lazy"
+              width={1800}
+              height={2512}
+            />
+            <figcaption class="text-sm">
+              Fig. 1 &mdash; Royal Albatross Centre: Not a single flying bird in
+              sight, just a bunch of wind and seagulls trying their best to
+              impersonate albatrosses.
+            </figcaption>
+          </figure>
+
+          <p class="mb-4">
+            We decided to move on to our next "touristy" spot: Pak n Save (a
+            supermarket). Yes, we needed groceries before hitting rural areas
+            for a few (well, one) days. With our shopping done, we ventured
+            south along the <a
+              href="https://www.newzealand.com/int/feature/south-island-southern-scenic-itinerary/"
+              class="underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Southern Scenic Route
+            </a>. Surprisingly, we didn't see many people &mdash; maybe we took
+            a wrong turn or something?
+          </p>
+
+          <p class="mb-4">
+            First up was Nugget Point, featuring a lighthouse perched on a
+            peninsula along the southern coast. A short, chilly, uphill walk led
+            us to the top, where we enjoyed a breathtaking panoramic view. The
+            sunny weather made the scene perfect.
+          </p>
+
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-6/nugget-point-1.jpg"
+              alt="Nugget Point Lighthouse"
+              loading="lazy"
+              width={1800}
+              height={2473}
+            />
+            <figcaption class="text-sm">
+              Fig. 2 &mdash; Nugget Point Lighthouse: A beacon of beauty.
+            </figcaption>
+          </figure>
+
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-6/nugget-point-2.jpg"
+              alt="A view from Nugget Point Lighthouse"
+              loading="lazy"
+              width={1800}
+              height={3004}
+            />
+            <figcaption class="text-sm">
+              Fig. 3 &mdash; A view worth the uphill battle.
+            </figcaption>
+          </figure>
+
+          <p class="mb-4">
+            Next, we headed to Slope Point, the southernmost part of the South
+            Island. To reach it, we trekked through a private farm, but it was
+            worth every step.
+          </p>
+
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-6/slope-point.jpg"
+              alt="Slope Point"
+              loading="lazy"
+              width={1800}
+              height={2338}
+            />
+            <figcaption class="text-sm">
+              Fig. 4 &mdash; Slope Point: The farthest south I've ever been.
+              Take that, Antarctica!
+            </figcaption>
+          </figure>
+
+          <p class="mb-4">
+            As the day drew to a close, we made our way to Fortrose for a night
+            of camping. This free, beachside campsite featured stunning sunset
+            views and a generous helping of strong winds.
+          </p>
+          <div class="flex flex-col w-full gap-y-16 py-4 md:py-16">
+            <a href="/travel/NZ/day-5">
+              <div class="flex flex-col items-start">
+                <span class="text-2xl font-bold"
+                  >Previous:<br class="block sm:hidden" /> Day #5</span
+                >
+                <span class="text-lg"> Duntroon - Oamaru - Dunedin</span>
+              </div>
+            </a>
+            <a href="/travel/NZ/day-7">
+              <div class="flex flex-col items-end text-right">
+                <span class="text-2xl font-bold"
+                  >Next:<br class="block sm:hidden" /> Day #7</span
+                >
+                <span class="text-lg">
+                  Fortrose - Bluff - Te Anau - Milford Sound
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- The map container -->
+      <div id="map" class="w-full h-screen md:w-2/3 lg:w-1/2"></div>
+    </div>
+  </div>
+  <script is:inline src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+  ></script>
+  <script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+  <script is:inline>
+    const calculateXOffset = () => {
+      const minWidthForOffset = 767;
+      const largeScreenWidthOffset = 0.25;
+      return window.innerWidth > minWidthForOffset ? largeScreenWidthOffset : 0;
+    };
+
+    const xOffset = calculateXOffset();
+
+    // Set the initial map view coordinates
+    const initialMapViewCoordinates = [
+      -45.87757594188441,
+      170.50440476679603 - 2.5 * xOffset,
+    ];
+
+    // Initialize the map with custom options
+    const map = L.map('map', {
+      attributionControl: false,
+      zoomControl: false,
+    }).setView(initialMapViewCoordinates, 9);
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 9,
+      className: 'map-tiles',
+    }).addTo(map);
+
+    // Replace the coordinates in the roadTripPath array with the coordinates of your road trip
+    const roadTripPoints = [
+      {
+        coordinates: [-45.87757594188441, 170.50440476679603],
+        name: 'Dunedin',
+      },
+      { coordinates: [-45.88302556439535, 170.6059900518678] },
+      { coordinates: [-45.876606373537385, 170.63607238536] },
+      { coordinates: [-45.84009236100995, 170.64928834848948] },
+      { coordinates: [-45.83143570956865, 170.6731512097535] },
+      { coordinates: [-45.798389336080064, 170.72178239246566] },
+      {
+        coordinates: [-45.77616071339427, 170.729407564753],
+        name: 'Royal Albatross Centre',
+      },
+      { coordinates: [-45.798389336080064, 170.72178239246566] },
+      { coordinates: [-45.83143570956865, 170.6731512097535] },
+      { coordinates: [-45.84009236100995, 170.64928834848948] },
+      { coordinates: [-45.876606373537385, 170.63607238536] },
+      { coordinates: [-45.88302556439535, 170.6059900518678] },
+      { coordinates: [-45.87757594188441, 170.50440476679603] },
+      { coordinates: [-45.90326086003142, 170.41913499907736] },
+      { coordinates: [-45.889878884491885, 170.35519006047758] },
+      { coordinates: [-45.9900776087447, 170.1302331031102] },
+      { coordinates: [-45.99972560703323, 170.12903325424793] },
+      { coordinates: [-46.04432716893345, 170.0608829899927] },
+      { coordinates: [-46.04798626190497, 170.04084988065242] },
+      { coordinates: [-46.131103380014466, 169.94265997282915] },
+      { coordinates: [-46.13004683177502, 169.9219088754306] },
+      { coordinates: [-46.19667918780759, 169.773554455342] },
+      { coordinates: [-46.227845242355514, 169.772101604056] },
+      { coordinates: [-46.24149007166067, 169.73070373792075] },
+      { coordinates: [-46.25932252017609, 169.74054529992875] },
+      { coordinates: [-46.29252024145602, 169.73006437901114] },
+      { coordinates: [-46.31342954915838, 169.76054424082204] },
+      { coordinates: [-46.32149162897899, 169.7971081141347] },
+      { coordinates: [-46.369587711330006, 169.7753573061196] },
+      { coordinates: [-46.399244609160455, 169.78216034144407] },
+      { coordinates: [-46.41324836895459, 169.79871070472367] },
+      { coordinates: [-46.435162518233426, 169.79417098509276] },
+      {
+        coordinates: [-46.44817281975813, 169.8168756640842],
+        name: 'Nugget Point',
+      },
+      { coordinates: [-46.435162518233426, 169.79417098509276] },
+      { coordinates: [-46.41324836895459, 169.79871070472367] },
+      { coordinates: [-46.399244609160455, 169.78216034144407] },
+      { coordinates: [-46.420044706098906, 169.73221025830574] },
+      { coordinates: [-46.402542786163934, 169.70316843613057] },
+      { coordinates: [-46.44584855507946, 169.6771952001981] },
+      { coordinates: [-46.46936469158096, 169.63704691898607] },
+      { coordinates: [-46.48815122834977, 169.59065341425486] },
+      { coordinates: [-46.479790199069875, 169.57041538115257] },
+      { coordinates: [-46.48967127743407, 169.56011238248234] },
+      { coordinates: [-46.48739118787799, 169.528099493757] },
+      { coordinates: [-46.514239509836656, 169.46407371630625] },
+      { coordinates: [-46.53550612278576, 169.47695246464403] },
+      { coordinates: [-46.57118493613489, 169.4666494659738] },
+      { coordinates: [-46.58206720871934, 169.39188224523363] },
+      { coordinates: [-46.58632199575098, 169.31707806211617] },
+      { coordinates: [-46.59589404563352, 169.3021172254927] },
+      { coordinates: [-46.59199452567551, 169.2799339160165] },
+      { coordinates: [-46.57887589930035, 169.22112235135864] },
+      { coordinates: [-46.578994243897725, 169.22009705641872] },
+      { coordinates: [-46.57664972186541, 169.17405037432252] },
+      { coordinates: [-46.56814997971158, 169.16509685280377] },
+      { coordinates: [-46.5731327487441, 169.15784876395531] },
+      { coordinates: [-46.57520431082278, 169.14016216165695] },
+      { coordinates: [-46.596647625783035, 169.12665458674388] },
+      { coordinates: [-46.62617182392188, 169.13538690063996] },
+      { coordinates: [-46.628279321573686, 169.12897113330501] },
+      { coordinates: [-46.632980474130434, 169.12813420841104] },
+      { coordinates: [-46.63616982630167, 169.13285909897306] },
+      { coordinates: [-46.651101452226634, 169.10269937016545] },
+      { coordinates: [-46.65078402183089, 169.06795714741702] },
+      { coordinates: [-46.64895316637423, 169.06415989596204] },
+      { coordinates: [-46.64963586548547, 169.05507361569477] },
+      { coordinates: [-46.641166719686986, 169.0425623202025] },
+      { coordinates: [-46.63567931753277, 169.02541855250274] },
+      { coordinates: [-46.63059091953527, 169.0261595807715] },
+      { coordinates: [-46.62719838841276, 169.0118330342429] },
+      {
+        coordinates: [-46.67530216533149, 169.00165101039465],
+        name: 'Slope Point',
+      },
+      { coordinates: [-46.62719838841276, 169.0118330342429] },
+      { coordinates: [-46.62493987543931, 168.99777544493756] },
+      { coordinates: [-46.63526603128363, 168.9528185048758] },
+      { coordinates: [-46.64257544294112, 168.93130018767798] },
+      { coordinates: [-46.637235266582046, 168.88377427788907] },
+      { coordinates: [-46.61932247127341, 168.87853858291302] },
+      { coordinates: [-46.610535650256374, 168.85553571008825] },
+      { coordinates: [-46.60272449770202, 168.8586568560863] },
+      { coordinates: [-46.592767474585536, 168.8370317730999] },
+      {
+        coordinates: [-46.57494039289994, 168.7965949584001],
+        name: 'Fortrose',
+      },
+    ];
+
+    // Extract only the coordinates for drawing the path
+    const roadTripPath = roadTripPoints.map((point) => point.coordinates);
+
+    // Create an SVG layer for the route
+    const svgLayer = L.svg().addTo(map);
+    const svg = d3.select(svgLayer._container);
+    const line = d3
+      .line()
+      .curve(d3.curveCatmullRom.alpha(0.5))
+      .x((d) => map.latLngToLayerPoint(d).x)
+      .y((d) => map.latLngToLayerPoint(d).y);
+
+    // Add the path to the SVG layer
+    const path = svg
+      .append('path')
+      .datum(roadTripPath)
+      .attr('d', line)
+      .attr('stroke', '#DDDDDD')
+      .attr('stroke-width', 5)
+      .attr('stroke-linecap', 'round')
+      .attr('fill', 'none');
+
+    // Update the path as the map moves
+    map.on('moveend', updatePath);
+    updatePath();
+
+    function updatePath() {
+      const updatedPath = roadTripPath.map((latlng) => L.latLng(latlng));
+      path.datum(updatedPath).attr('d', line);
+    }
+
+    // Draw the route as you scroll
+    const scrollContainer = document.getElementById('scrollContainer');
+    const zoomLevel = 9; // Set your desired zoom level here
+
+    const carIcon = L.icon({
+      iconUrl:
+        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white"><rect x="3" y="11" width="18" height="10" rx="2" ry="2"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/><path d="M5.20711 9.5C5.84692 8.34171 7.1005 7.5 8.5 7.5H15.5C16.8995 7.5 18.1531 8.34171 18.7929 9.5"/></svg>',
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+    });
+
+    const carMarker = L.marker(roadTripPath[0], { icon: carIcon }).addTo(map);
+
+    let activeDot = null;
+    let activePopup = null;
+
+    // Update the scroll event listener
+    window.addEventListener('scroll', () => {
+      const scrollPercentage =
+        window.scrollY / (scrollContainer.scrollHeight - window.innerHeight);
+      const newPathLength = scrollPercentage * path.node().getTotalLength();
+      path.style(
+        'stroke-dasharray',
+        `${newPathLength}, ${path.node().getTotalLength()}`
+      );
+
+      // Get the current point on the path based on scroll percentage
+      const currentPoint = path.node().getPointAtLength(newPathLength);
+
+      // Convert the current point to latitude and longitude coordinates
+      const currentLatLng = map.layerPointToLatLng([
+        currentPoint.x,
+        currentPoint.y,
+      ]);
+
+      // Find the closest point to the current position
+      const closestPoint = roadTripPoints
+        .filter((point) => point.name)
+        .reduce((prev, curr) => {
+          const prevDistance = map.distance(prev.coordinates, currentLatLng);
+          const currDistance = map.distance(curr.coordinates, currentLatLng);
+          return currDistance < prevDistance ? curr : prev;
+        });
+
+      // Close the active popup and open the popup for the closest point
+      if (activePopup) {
+        activePopup.closePopup();
+      }
+      if (closestPoint.name) {
+        activePopup = L.popup({
+          closeButton: false,
+        })
+          .setLatLng(closestPoint.coordinates)
+          .setContent(`<b>${closestPoint.name}</b>`)
+          .openOn(map);
+
+        activeDot = L.circleMarker(closestPoint.coordinates, {
+          color: '#DDDDDD',
+          fillColor: '#DDDDDD',
+          fillOpacity: 1,
+          radius: 5,
+        }).addTo(map);
+      }
+
+      // Get the x coordinate of the new center
+      const centerX = currentPoint.x - xOffset * window.innerWidth;
+
+      // Convert the new center to latitude and longitude coordinates
+      const centerLatLng = map.layerPointToLatLng([centerX, currentPoint.y]);
+
+      // Set the map view with the constant zoom level
+      map.setView(centerLatLng, zoomLevel, { animate: false });
+
+      // Update the car marker position
+      carMarker.setLatLng(currentLatLng);
+    });
+  </script>
+</Layout>

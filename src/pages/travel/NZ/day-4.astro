@@ -1,0 +1,356 @@
+---
+import { Image } from '@astrojs/image/components';
+import Layout from '../../../layouts/roadtrip.astro';
+---
+
+<head>
+  <style>
+    :global(#scrollContainer) {
+      height: 550vh;
+    }
+    @media (max-width: 768px) {
+      :global(#scrollContainer) {
+        height: 600vh;
+      }
+    }
+  </style>
+</head>
+
+<Layout
+  title="New Zealand Road Trip - Day 4 | Muhammad Farhan Abiyyullah"
+  description="Day 4 of Farhan Abi's road trip in New Zealand, exploring the outdoors and scenic drives."
+>
+  <div class="relative h-full w-full">
+    <div id="map" class="fixed w-full h-screen"></div>
+    <div
+      id="scrollContainer"
+      class="relative h-max w-full flex flex-col py-36 md:py-48 md:flex-row"
+    >
+      <div
+        id="story"
+        class="absolute text-white min-h-max h-full w-full top-0 m-auto px-8 py-36 bg-black bg-opacity-60 text-lg z-10 md:bg-opacity-70 md:w-2/3 md:mb-0 md:py-48 lg:w-1/2 xl:px-32"
+      >
+        <div class="flex flex-col min-h-max">
+          <h1 class="text-4xl font-bold mb-4">
+            New Zealand Road Trip <br class="hidden sm:block" />- Day #4
+          </h1>
+          <h2 class="text-2xl my-4 space-y-2">
+            Lake Tekapo - Mt. Cook - Duntroon (~273km)
+          </h2>
+          <p class="mb-4">
+            After spending a night at Lake Tekapo, we set off for Mt. Cook—a
+            must-see in NZ. Like any road trippers, we stopped at every scenic
+            lookout along the way. There were about five lookouts, and we spent
+            around 15 minutes at each, snapping pictures. One was full, but we
+            patiently waited for others to leave.
+          </p>
+          <h3 class="text-xl mb-4 mt-4 space-y-2">Mt. Cook</h3>
+          <p class="mb-4">
+            Arriving at one of the best scenic lookouts of the trip, I was left
+            speechless. I paused for a moment, taking it all in, before stepping
+            out to capture the beauty.
+          </p>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-4/mt-cook-1.jpg"
+              alt="The majestic Mt. Cook"
+              loading="lazy"
+              width={5184}
+              height={3456}
+            />
+            <figcaption class="text-sm">
+              Fig. 1 &mdash; The majestic Mt. Cook, simply surreal. Photo by
+              Marsha
+            </figcaption>
+          </figure>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-4/mt-cook-2.jpg"
+              alt="The photo of Farhan with Mt. Cook as a background"
+              loading="lazy"
+              width={5184}
+              height={3456}
+            />
+            <figcaption class="text-sm">
+              Fig. 2 &mdash; Hands down, my best photo so far. Photo by Marsha
+            </figcaption>
+          </figure>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-4/mt-cook-3.jpg"
+              alt="Duck crossing"
+              loading="lazy"
+              width={1800}
+              height={2930}
+            />
+            <figcaption class="text-sm">
+              Fig. 3 &mdash; Even a charming duck crossing in their little town.
+              Photo by Marsha (Why didn't I take this one myself?)
+            </figcaption>
+          </figure>
+          <p class="mb-4">
+            With our fill of Mt. Cook's sights, we headed to Glentanner for a
+            heli-ride. Unfortunately, our flight was canceled en route, so we
+            cooked lunch near Glentanner Aerodrome instead, daydreaming about
+            what could have been.
+          </p>
+          <p class="mb-4">
+            Post-lunch, we visited a lavender farm in Twizel. Marsha enjoyed
+            lavender ice cream, while I opted out due to the chilly weather
+            (though, in hindsight, I regretted it). Sadly, it wasn't the
+            blooming season, so we only saw green plants instead of purple
+            lavender.
+          </p>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-4/twizel-1.jpg"
+              alt="Lavender Farm"
+              loading="lazy"
+              width={1800}
+              height={2200}
+            />
+            <figcaption class="text-sm">
+              Fig. 4 &mdash; These green plants could grow into lavender... or
+              not, who knows?
+            </figcaption>
+          </figure>
+          <p class="mb-4">
+            Next up was Oamaru, but with a long drive ahead, we stopped for the
+            night in the quaint town of Duntroon. The campground here ended up
+            being my favorite of the entire trip. I chatted with our campervan
+            neighbor, who shared her life stories while she yarned alpaca wool.
+            That inspiring conversation marked the end of our fourth day.
+          </p>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-4/duntroon-1.jpg"
+              alt="Our campground neighbor"
+              loading="lazy"
+              width={1800}
+              height={3175}
+            />
+            <figcaption class="text-sm">
+              Fig. 5 &mdash; Our campground neighbor, skillfully yarning wool
+            </figcaption>
+          </figure>
+          <div class="flex flex-col w-full gap-y-16 py-4 md:py-16">
+            <a href="/travel/NZ/day-3">
+              <div class="flex flex-col items-start">
+                <span class="text-2xl font-bold"
+                  >Previous:<br class="block sm:hidden" /> Day #3</span
+                >
+                <span class="text-lg">
+                  Motukarara - Christchurch - Lake Tekapo
+                </span>
+              </div>
+            </a>
+            <a href="/travel/NZ/day-5">
+              <div class="flex flex-col items-end text-right">
+                <span class="text-2xl font-bold"
+                  >Next:<br class="block sm:hidden" /> Day #5</span
+                >
+                <span class="text-lg"> Duntroon - Oamaru - Dunedin</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- The map container -->
+      <div id="map" class="w-full h-screen md:w-2/3 lg:w-1/2"></div>
+    </div>
+  </div>
+  <script is:inline src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+  ></script>
+  <script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+  <script is:inline>
+    const calculateXOffset = () => {
+      const minWidthForOffset = 767;
+      const largeScreenWidthOffset = 0.25;
+      return window.innerWidth > minWidthForOffset ? largeScreenWidthOffset : 0;
+    };
+
+    const xOffset = calculateXOffset();
+
+    // Set the initial map view coordinates
+    const initialMapViewCoordinates = [-44.006102, 170.479534 - 2.5 * xOffset];
+
+    // Initialize the map with custom options
+    const map = L.map('map', {
+      attributionControl: false,
+      zoomControl: false,
+    }).setView(initialMapViewCoordinates, 9);
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 9,
+      className: 'map-tiles',
+    }).addTo(map);
+
+    // Replace the coordinates in the roadTripPath array with the coordinates of your road trip
+    const roadTripPoints = [
+      { coordinates: [-44.006102, 170.479534], name: 'Lake Tekapo' },
+      { coordinates: [-43.997534, 170.416293] },
+      { coordinates: [-44.02035114442594, 170.40340295908956] },
+      { coordinates: [-44.087694278807845, 170.34910201106788] },
+      { coordinates: [-44.133573274083865, 170.35106352277163] },
+      { coordinates: [-44.16984751325411, 170.3318520223611] },
+      { coordinates: [-44.20320012178417, 170.25702828392] },
+      { coordinates: [-44.16833313322573, 170.21132592767367] },
+      { coordinates: [-44.183403432087076, 170.18859805131814] },
+      { coordinates: [-44.17448474080921, 170.1735890763664] },
+      { coordinates: [-44.17694520418299, 170.15600713428006] },
+      { coordinates: [-44.19078339775238, 170.14056933147253] },
+      { coordinates: [-44.171101436041276, 170.11098020942478] },
+      { coordinates: [-44.14772057270688, 170.10926489800173] },
+      { coordinates: [-44.08415886835409, 170.1353824388582] },
+      { coordinates: [-43.94176148400471, 170.1306960704674] },
+      { coordinates: [-43.916695295774225, 170.11312218900397] },
+      { coordinates: [-43.905324242992506, 170.12599275042106] },
+      { coordinates: [-43.87397387065553, 170.11943386301664] },
+      { coordinates: [-43.86271089309968, 170.10306882540726] },
+      { coordinates: [-43.83925117228644, 170.10982531674634] },
+      { coordinates: [-43.78327152337756, 170.1233382994245] },
+      {
+        coordinates: [-43.7355672588447, 170.1010166010129],
+        name: 'Aoraki / Mount Cook',
+      },
+      { coordinates: [-43.78327152337756, 170.1233382994245] },
+      { coordinates: [-43.83925117228644, 170.10982531674634] },
+      { coordinates: [-43.86271089309968, 170.10306882540726] },
+      { coordinates: [-43.87397387065553, 170.11943386301664] },
+      { coordinates: [-43.905324242992506, 170.12599275042106] },
+      { coordinates: [-43.916695295774225, 170.11312218900397] },
+      { coordinates: [-43.94176148400471, 170.1306960704674] },
+      { coordinates: [-44.08415886835409, 170.1353824388582] },
+      { coordinates: [-44.14772057270688, 170.10926489800173] },
+      { coordinates: [-44.171101436041276, 170.11098020942478] },
+      { coordinates: [-44.25134886138808, 170.11637847882693] },
+      { coordinates: [-44.264561750451165, 170.1034003722341], name: 'Twizel' },
+      { coordinates: [-44.34544906935683, 170.01327376750575] },
+      { coordinates: [-44.45926186936643, 169.97517963951708] },
+      { coordinates: [-44.4706309715697, 169.987646808677] },
+      { coordinates: [-44.487550338055414, 169.96559467007222] },
+      { coordinates: [-44.498711854579106, 170.02315492014753] },
+      { coordinates: [-44.5311175970732, 170.06357029726814] },
+      { coordinates: [-44.576229324652125, 170.10883849159308] },
+      { coordinates: [-44.6187452288559, 170.2525629919582] },
+      { coordinates: [-44.652240183498286, 170.3442820939559] },
+      { coordinates: [-44.68612536922804, 170.41851327340962] },
+      { coordinates: [-44.828260294695134, 170.57598164101955] },
+      {
+        coordinates: [-44.85531477617524, 170.68597635031503],
+        name: 'Duntroon',
+      },
+    ];
+
+    // Extract only the coordinates for drawing the path
+    const roadTripPath = roadTripPoints.map((point) => point.coordinates);
+
+    // Create an SVG layer for the route
+    const svgLayer = L.svg().addTo(map);
+    const svg = d3.select(svgLayer._container);
+    const line = d3
+      .line()
+      .curve(d3.curveCatmullRom.alpha(0.5))
+      .x((d) => map.latLngToLayerPoint(d).x)
+      .y((d) => map.latLngToLayerPoint(d).y);
+
+    // Add the path to the SVG layer
+    const path = svg
+      .append('path')
+      .datum(roadTripPath)
+      .attr('d', line)
+      .attr('stroke', '#DDDDDD')
+      .attr('stroke-width', 5)
+      .attr('stroke-linecap', 'round')
+      .attr('fill', 'none');
+
+    // Update the path as the map moves
+    map.on('moveend', updatePath);
+    updatePath();
+
+    function updatePath() {
+      const updatedPath = roadTripPath.map((latlng) => L.latLng(latlng));
+      path.datum(updatedPath).attr('d', line);
+    }
+
+    // Draw the route as you scroll
+    const scrollContainer = document.getElementById('scrollContainer');
+    const zoomLevel = 9; // Set your desired zoom level here
+
+    const carIcon = L.icon({
+      iconUrl:
+        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white"><rect x="3" y="11" width="18" height="10" rx="2" ry="2"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/><path d="M5.20711 9.5C5.84692 8.34171 7.1005 7.5 8.5 7.5H15.5C16.8995 7.5 18.1531 8.34171 18.7929 9.5"/></svg>',
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+    });
+
+    const carMarker = L.marker(roadTripPath[0], { icon: carIcon }).addTo(map);
+
+    let activeDot = null;
+    let activePopup = null;
+
+    // Update the scroll event listener
+    window.addEventListener('scroll', () => {
+      const scrollPercentage =
+        window.scrollY / (scrollContainer.scrollHeight - window.innerHeight);
+      const newPathLength = scrollPercentage * path.node().getTotalLength();
+      path.style(
+        'stroke-dasharray',
+        `${newPathLength}, ${path.node().getTotalLength()}`
+      );
+
+      // Get the current point on the path based on scroll percentage
+      const currentPoint = path.node().getPointAtLength(newPathLength);
+
+      // Convert the current point to latitude and longitude coordinates
+      const currentLatLng = map.layerPointToLatLng([
+        currentPoint.x,
+        currentPoint.y,
+      ]);
+
+      // Find the closest point to the current position
+      const closestPoint = roadTripPoints
+        .filter((point) => point.name)
+        .reduce((prev, curr) => {
+          const prevDistance = map.distance(prev.coordinates, currentLatLng);
+          const currDistance = map.distance(curr.coordinates, currentLatLng);
+          return currDistance < prevDistance ? curr : prev;
+        });
+
+      // Close the active popup and open the popup for the closest point
+      if (activePopup) {
+        activePopup.closePopup();
+      }
+      if (closestPoint.name) {
+        activePopup = L.popup({
+          closeButton: false,
+        })
+          .setLatLng(closestPoint.coordinates)
+          .setContent(`<b>${closestPoint.name}</b>`)
+          .openOn(map);
+
+        activeDot = L.circleMarker(closestPoint.coordinates, {
+          color: '#DDDDDD',
+          fillColor: '#DDDDDD',
+          fillOpacity: 1,
+          radius: 5,
+        }).addTo(map);
+      }
+
+      // Get the x coordinate of the new center
+      const centerX = currentPoint.x - xOffset * window.innerWidth;
+
+      // Convert the new center to latitude and longitude coordinates
+      const centerLatLng = map.layerPointToLatLng([centerX, currentPoint.y]);
+
+      // Set the map view with the constant zoom level
+      map.setView(centerLatLng, zoomLevel, { animate: false });
+
+      // Update the car marker position
+      carMarker.setLatLng(currentLatLng);
+    });
+  </script>
+</Layout>

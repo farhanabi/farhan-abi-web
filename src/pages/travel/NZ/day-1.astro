@@ -1,0 +1,302 @@
+---
+import { Image } from '@astrojs/image/components';
+import Layout from '../../../layouts/roadtrip.astro';
+---
+
+<head>
+  <style>
+    :global(#scrollContainer) {
+      height: 325vh;
+    }
+    @media (max-width: 768px) {
+      :global(#scrollContainer) {
+        height: 450vh;
+      }
+    }
+  </style>
+</head>
+
+<Layout
+  title="Day 1 - New Zealand Road Trip: Christchurch to Springfield | Muhammad Farhan Abiyyullah"
+  description="Day 1 of Farhan Abi's road trip in New Zealand, embark on a fun and exciting road trip through New Zealand! Follow our hilarious journey from Christchurch to Springfield, complete with breathtaking scenery, mishaps, and unforgettable moments."
+>
+  <div class="relative h-full w-full">
+    <div id="map" class="fixed w-full h-screen"></div>
+    <div
+      id="scrollContainer"
+      class="relative h-max w-full flex flex-col py-36 md:py-48 md:flex-row"
+    >
+      <div
+        id="story"
+        class="absolute text-white min-h-max h-full w-full top-0 m-auto px-8 py-36 bg-black bg-opacity-60 text-lg z-10 md:bg-opacity-70 md:w-2/3 md:mb-0 md:py-48 lg:w-1/2 xl:px-32"
+      >
+        <div class="flex flex-col min-h-max">
+          <h1 class="text-4xl font-bold mb-4">
+            New Zealand Road Trip <br class="hidden sm:block" />- Day #1
+          </h1>
+          <p class="p-4 my-4 bg-black block text-base md:hidden">
+            Hey there, mobile readers! For an even better experience, I
+            recommend switching to a <b>desktop</b> device to read this story. You'll
+            get a smoother and more visible map, making your virtual journey with
+            me even more enjoyable. But, no pressure! It's all up to you. Happy reading!
+            :)
+          </p>
+          <h2 class="text-2xl my-4 space-y-2">
+            Christchurch - Arthur's Pass Village - Springfield (231km-ish)
+          </h2>
+          <p class="mb-4">
+            Guess who finally made it to New Zealand? Me! It's already day four,
+            but who's counting? I can't wait to explore this stunning country
+            I've been dreaming about for ages. The day has finally come, and I'm
+            so ready for this epic adventure!
+          </p>
+          <p class="mb-4">
+            Today was my first day driving in New Zealand (and my first time
+            driving abroad EVER). Let's just say, getting used to the traffic
+            and rules has been a wild ride, especially coming from Indonesia
+            where traffic rules are more like "suggestions." To top it off,
+            Q-airline delayed my baggage, so my wardrobe is a bit limited right
+            now.
+          </p>
+          <p class="mb-4">
+            Thankfully, my friend Marsha is joining me on this road trip, so I
+            won't be causing chaos solo. Our first mission: hitting up Pak 'n
+            Save, a popular Kiwi supermarket, to stock up on snacks and drinks
+            for the journey. And you bet we had Nando's for lunch -
+            finger-licking good! (This is not a sponsored post, I swear)
+          </p>
+          <p class="mb-8">
+            Next stop: Arthur's Pass Village, nestled right in the heart of the
+            Southern Alps. It was all farms and sheep along the way, making me
+            feel like I was truly in New Zealand.
+          </p>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-1/arthurs-pass-2.jpg"
+              alt="On the road to Arthur's Pass Village"
+              loading="lazy"
+              width={1800}
+              height={2200}
+            />
+            <figcaption class="text-sm">
+              Fig.1 &mdash; On the road to Arthur's Pass Village
+            </figcaption>
+          </figure>
+
+          <h3 class="text-xl mb-4 mt-36 space-y-2 md:mt-4">
+            Arthur's Pass Village
+          </h3>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-1/arthurs-pass-1.jpg"
+              alt="Arthur's Pass Village"
+              loading="lazy"
+              width={1800}
+              height={2000}
+            />
+            <figcaption class="text-sm">
+              Fig.2 &mdash; Arthur's Pass Village
+            </figcaption>
+          </figure>
+          <p class="mb-4">
+            Arthur's Pass Village is a tiny town in the mountains is a hotspot
+            for hikers and thrill-seekers. We couldn't explore much, but we did
+            pop into the Arthur's Pass National Park Visitor Centre and took a
+            breather at the local train station.
+          </p>
+
+          <h3 class="text-xl mb-4 mt-36 space-y-2 md:mt-4">Springfield</h3>
+          <p class="mb-4">
+            Our home for the night was a cozy campground in Springfield, a
+            quaint little town sandwiched between Christchurch and Arthur's Pass
+            Village. We rolled in a bit late, but hey, that's all part of the
+            adventure!
+          </p>
+          <div class="flex flex-col w-full gap-y-16 py-4 md:py-16">
+            <a href="/travel/NZ/day-2">
+              <div class="flex flex-col items-end text-right">
+                <span class="text-2xl font-bold"
+                  >Next:<br class="block sm:hidden" /> Day #2</span
+                >
+                <span class="text-lg">
+                  Springfield - Christchurch - Akaroa
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- The map container -->
+      <div class="w-full h-screen md:w-2/3 lg:w-1/2"></div>
+    </div>
+  </div>
+  <script is:inline src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+  ></script>
+  <script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+  <script is:inline>
+    const calculateXOffset = () => {
+      const minWidthForOffset = 767;
+      const largeScreenWidthOffset = 0.25;
+      return window.innerWidth > minWidthForOffset ? largeScreenWidthOffset : 0;
+    };
+
+    const xOffset = calculateXOffset();
+
+    // Set the initial map view coordinates
+    const initialMapViewCoordinates = [-43.53, 172.63 - 2.5 * xOffset];
+
+    // Initialize the map with custom options
+    const map = L.map('map', {
+      attributionControl: false,
+      zoomControl: false,
+    }).setView(initialMapViewCoordinates, 9);
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 9,
+      className: 'map-tiles',
+    }).addTo(map);
+
+    // Replace the coordinates in the roadTripPath array with the coordinates of your road trip
+    const roadTripPoints = [
+      { coordinates: [-43.53, 172.63], name: 'Christchurch' },
+      { coordinates: [-43.464901, 172.23296] },
+      { coordinates: [-43.399233, 172.032263] },
+      { coordinates: [-43.330709, 171.908798] },
+      { coordinates: [-43.326629, 171.786403] },
+      { coordinates: [-43.293223, 171.721622] },
+      { coordinates: [-43.294307, 171.710536] },
+      { coordinates: [-43.258362, 171.713251] },
+      { coordinates: [-43.243172, 171.72677] },
+      { coordinates: [-43.196363, 171.740512] },
+      { coordinates: [-43.146675, 171.74082] },
+      { coordinates: [-43.088291, 171.777888] },
+      { coordinates: [-43.008049, 171.732688] },
+      { coordinates: [-43.031969, 171.677978] },
+      { coordinates: [-43.02094, 171.597116] },
+      { coordinates: [-42.9402, 171.562], name: "Arthur's Pass Village" },
+      { coordinates: [-43.02094, 171.597116] },
+      { coordinates: [-43.031969, 171.677978] },
+      { coordinates: [-43.008049, 171.732688] },
+      { coordinates: [-43.088291, 171.777888] },
+      { coordinates: [-43.146675, 171.74082] },
+      { coordinates: [-43.196363, 171.740512] },
+      { coordinates: [-43.243172, 171.72677] },
+      { coordinates: [-43.258362, 171.713251] },
+      { coordinates: [-43.294307, 171.710536] },
+      { coordinates: [-43.293223, 171.721622] },
+      { coordinates: [-43.326629, 171.786403] },
+      { coordinates: [-43.330709, 171.908798], name: 'Springfield' },
+    ];
+
+    // Extract only the coordinates for drawing the path
+    const roadTripPath = roadTripPoints.map((point) => point.coordinates);
+
+    // Create an SVG layer for the route
+    const svgLayer = L.svg().addTo(map);
+    const svg = d3.select(svgLayer._container);
+    const line = d3
+      .line()
+      .curve(d3.curveCatmullRom.alpha(0.5))
+      .x((d) => map.latLngToLayerPoint(d).x)
+      .y((d) => map.latLngToLayerPoint(d).y);
+
+    // Add the path to the SVG layer
+    const path = svg
+      .append('path')
+      .datum(roadTripPath)
+      .attr('d', line)
+      .attr('stroke', '#DDDDDD')
+      .attr('stroke-width', 5)
+      .attr('stroke-linecap', 'round')
+      .attr('fill', 'none');
+
+    // Update the path as the map moves
+    map.on('moveend', updatePath);
+    updatePath();
+
+    function updatePath() {
+      const updatedPath = roadTripPath.map((latlng) => L.latLng(latlng));
+      path.datum(updatedPath).attr('d', line);
+    }
+
+    // Draw the route as you scroll
+    const scrollContainer = document.getElementById('scrollContainer');
+    const zoomLevel = 9; // Set your desired zoom level here
+
+    const carIcon = L.icon({
+      iconUrl:
+        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white"><rect x="3" y="11" width="18" height="10" rx="2" ry="2"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/><path d="M5.20711 9.5C5.84692 8.34171 7.1005 7.5 8.5 7.5H15.5C16.8995 7.5 18.1531 8.34171 18.7929 9.5"/></svg>',
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+    });
+
+    const carMarker = L.marker(roadTripPath[0], { icon: carIcon }).addTo(map);
+
+    let activeDot = null;
+    let activePopup = null;
+
+    // Update the scroll event listener
+    window.addEventListener('scroll', () => {
+      const scrollPercentage =
+        window.scrollY / (scrollContainer.scrollHeight - window.innerHeight);
+      const newPathLength = scrollPercentage * path.node().getTotalLength();
+      path.style(
+        'stroke-dasharray',
+        `${newPathLength}, ${path.node().getTotalLength()}`
+      );
+
+      // Get the current point on the path based on scroll percentage
+      const currentPoint = path.node().getPointAtLength(newPathLength);
+
+      // Convert the current point to latitude and longitude coordinates
+      const currentLatLng = map.layerPointToLatLng([
+        currentPoint.x,
+        currentPoint.y,
+      ]);
+
+      // Find the closest point to the current position
+      const closestPoint = roadTripPoints
+        .filter((point) => point.name)
+        .reduce((prev, curr) => {
+          const prevDistance = map.distance(prev.coordinates, currentLatLng);
+          const currDistance = map.distance(curr.coordinates, currentLatLng);
+          return currDistance < prevDistance ? curr : prev;
+        });
+
+      // Close the active popup and open the popup for the closest point
+      if (activePopup) {
+        activePopup.closePopup();
+      }
+      if (closestPoint.name) {
+        activePopup = L.popup({
+          closeButton: false,
+        })
+          .setLatLng(closestPoint.coordinates)
+          .setContent(`<b>${closestPoint.name}</b>`)
+          .openOn(map);
+
+        activeDot = L.circleMarker(closestPoint.coordinates, {
+          color: '#DDDDDD',
+          fillColor: '#DDDDDD',
+          fillOpacity: 1,
+          radius: 5,
+        }).addTo(map);
+      }
+
+      // Get the x coordinate of the new center
+      const centerX = currentPoint.x - xOffset * window.innerWidth;
+
+      // Convert the new center to latitude and longitude coordinates
+      const centerLatLng = map.layerPointToLatLng([centerX, currentPoint.y]);
+
+      // Set the map view with the constant zoom level
+      map.setView(centerLatLng, zoomLevel, { animate: false });
+
+      // Update the car marker position
+      carMarker.setLatLng(currentLatLng);
+    });
+  </script>
+</Layout>

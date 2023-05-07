@@ -1,0 +1,329 @@
+---
+import { Image } from '@astrojs/image/components';
+import Layout from '../../../layouts/roadtrip.astro';
+---
+
+<head>
+  <style>
+    :global(#scrollContainer) {
+      height: 350vh;
+    }
+    @media (max-width: 768px) {
+      :global(#scrollContainer) {
+        height: 475vh;
+      }
+    }
+  </style>
+</head>
+
+<Layout
+  title="Day 2 - New Zealand Road Trip: Springfield to Motukarara | Muhammad Farhan Abiyyullah"
+  description="Join us for day two of our New Zealand road trip, as we explore Shammara Alpacas, Akaroa's stunning harbor, and the scenic route to Motukarara. Get ready for laughter, adventure, and awe-inspiring views!"
+>
+  <div class="relative h-full w-full">
+    <div id="map" class="fixed w-full h-screen"></div>
+    <div
+      id="scrollContainer"
+      class="relative h-max w-full flex flex-col py-36 md:py-48 md:flex-row"
+    >
+      <div
+        id="story"
+        class="absolute text-white min-h-max h-full w-full top-0 m-auto px-8 py-36 bg-black bg-opacity-60 text-lg z-10 md:bg-opacity-70 md:w-2/3 md:mb-0 md:py-48 lg:w-1/2 xl:px-32"
+      >
+        <div class="flex flex-col min-h-max">
+          <h1 class="text-4xl font-bold mb-4">
+            New Zealand Road Trip <br class="hidden sm:block" />- Day #2
+          </h1>
+          <h2 class="text-2xl my-4 space-y-2">
+            Springfield - Christchurch - Akaroa - Motukarara (214km-ish)
+          </h2>
+          <p class="mb-4">
+            Day two, here we go! My day kicked off with a mix of good and bad
+            news. On the bright side, the airline found my baggage (hell yeah!).
+            However, our car battery decided to give up on us (talk about
+            timing), so we had to call for road assistance and shell out $200.
+            It wasn't ideal, but hey, that's life on the road. After getting
+            back on track, we headed to Christchurch for some much-needed
+            grocery shopping (seriously, how will I survive remote road trips
+            like this?).
+          </p>
+          <p class="mb-4">
+            Lunchtime rolled around, and we swapped Nando's for McDonald's
+            before setting off for Shammara Alpacas, a must-visit spot on my NZ
+            bucket list.
+          </p>
+          <p class="mb-4">
+            The drive there was absolutely breathtaking, with lush, mountainous
+            landscapes and the ocean shimmering in the distance. Pure magic!
+          </p>
+
+          <h3 class="text-xl mb-4 mt-4 space-y-2">Shammara Alpacas</h3>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-2/shammara-alpacas-1.jpg"
+              alt="Alpacas at Shammara Alpacas"
+              loading="lazy"
+              width={1800}
+              height={2200}
+            />
+            <figcaption class="text-sm">
+              Fig.1 &mdash; Alpacas at Shammara Alpacas
+            </figcaption>
+          </figure>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-2/shammara-alpacas-2.jpg"
+              alt="Yours truly getting up close and personal with the alpacas"
+              loading="lazy"
+              width={1800}
+              height={2200}
+            />
+            <figcaption class="text-sm">
+              Fig.2 &mdash; Yours truly getting up close and personal with the
+              alpacas. Photo by Marsha
+            </figcaption>
+          </figure>
+          <p class="mb-4">
+            Perched atop a hill overlooking Akaroa, Shammara Alpacas is home to
+            a whole herd of these adorable, fluffy creatures. The farm boasts
+            stunning scenery and a small shop where you can buy cozy alpaca wool
+            products. I can't wait to visit again!
+          </p>
+          <p class="mb-4">
+            We were a tad unlucky, as the alpacas had just been sheared, making
+            them look a bit thinner and less fluffy. But, they were still super
+            cute!
+          </p>
+          <p class="mb-4">
+            Next up, we headed to the picturesque town of Akaroa.
+          </p>
+          <h3 class="text-xl mb-4 mt-4 space-y-2">Akaroa</h3>
+          <div class="mb-8 space-y-4">
+            <div class="p-8 text-lg bg-black">
+              I would have shared a lovely photo of Akaroa here, but I was so
+              immersed in the experience that I forgot to take one. Well,
+              consider this a prime advertising spot instead! &#128521;
+            </div>
+            <p class="text-sm">Fig.3 &mdash; (Supposed to be) Akaroa</p>
+          </div>
+          <p class="mb-4">
+            With its charming harbor and laid-back vibes, Akaroa was the perfect
+            place to unwind and soak in the views. We parked the car and enjoyed
+            a leisurely stroll around the harbor.
+          </p>
+          <p class="mb-4">
+            After taking in the sights, we made our way to Motukarara for the
+            night. We found a lovely campground there and decided to call it a
+            day.
+          </p>
+          <div class="flex flex-col w-full gap-y-16 py-4 md:py-16">
+            <a href="/travel/NZ/day-1">
+              <div class="flex flex-col items-start">
+                <span class="text-2xl font-bold"
+                  >Previous:<br class="block sm:hidden" /> Day #1</span
+                >
+                <span class="text-lg">
+                  Christchurch - Springfield - Arthur's Pass Village
+                </span>
+              </div>
+            </a>
+            <a href="/travel/NZ/day-3">
+              <div class="flex flex-col items-end text-right">
+                <span class="text-2xl font-bold"
+                  >Next:<br class="block sm:hidden" /> Day #3</span
+                >
+                <span class="text-lg">
+                  Akaroa - Christchurch - Lake Tekapo
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- The map container -->
+      <div id="map" class="w-full h-screen md:w-2/3 lg:w-1/2"></div>
+    </div>
+  </div>
+  <script is:inline src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+  ></script>
+  <script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+  <script is:inline>
+    const calculateXOffset = () => {
+      const minWidthForOffset = 767;
+      const largeScreenWidthOffset = 0.25;
+      return window.innerWidth > minWidthForOffset ? largeScreenWidthOffset : 0;
+    };
+
+    const xOffset = calculateXOffset();
+
+    // Set the initial map view coordinates
+    const initialMapViewCoordinates = [-43.330709, 171.908798 - 2.5 * xOffset];
+
+    // Initialize the map with custom options
+    const map = L.map('map', {
+      attributionControl: false,
+      zoomControl: false,
+    }).setView(initialMapViewCoordinates, 9);
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 9,
+      className: 'map-tiles',
+    }).addTo(map);
+
+    // Replace the coordinates in the roadTripPath array with the coordinates of your road trip
+    const roadTripPoints = [
+      { coordinates: [-43.330709, 171.908798], name: 'Springfield' },
+      { coordinates: [-43.399233, 172.032263] },
+      { coordinates: [-43.464901, 172.23296] },
+      { coordinates: [-43.53, 172.63], name: 'Christchurch' },
+      { coordinates: [-43.579004, 172.566691] },
+      { coordinates: [-43.5854855, 172.570875] },
+      { coordinates: [-43.661336, 172.548073] },
+      { coordinates: [-43.674405, 172.549635] },
+      { coordinates: [-43.690684, 172.560257] },
+      { coordinates: [-43.711331, 172.564874] },
+      { coordinates: [-43.727788, 172.591849] },
+      { coordinates: [-43.722344, 172.596671] },
+      { coordinates: [-43.732366, 172.613579] },
+      { coordinates: [-43.744924, 172.610192] },
+      { coordinates: [-43.775851, 172.645356] },
+      { coordinates: [-43.774317, 172.655784] },
+      { coordinates: [-43.79465, 172.664358] },
+      { coordinates: [-43.814743, 172.69843] },
+      { coordinates: [-43.751308, 172.820113] },
+      { coordinates: [-43.749001, 172.838055] },
+      { coordinates: [-43.758002, 172.855709] },
+      { coordinates: [-43.748179, 172.866947] },
+      { coordinates: [-43.762124, 172.910206] },
+      { coordinates: [-43.787848, 172.9040045], name: 'Shammara Alpacas' },
+      { coordinates: [-43.762124, 172.910206] },
+      { coordinates: [-43.752662, 172.942079] },
+      { coordinates: [-43.804566, 172.967581], name: 'Akaroa' },
+      { coordinates: [-43.752662, 172.942079] },
+      { coordinates: [-43.762124, 172.910206] },
+      { coordinates: [-43.748179, 172.866947] },
+      { coordinates: [-43.758002, 172.855709] },
+      { coordinates: [-43.749001, 172.838055] },
+      { coordinates: [-43.751308, 172.820113] },
+      { coordinates: [-43.814743, 172.69843] },
+      { coordinates: [-43.79465, 172.664358] },
+      { coordinates: [-43.774317, 172.655784] },
+      { coordinates: [-43.775851, 172.645356] },
+      { coordinates: [-43.744924, 172.610192] },
+      { coordinates: [-43.732366, 172.613579] },
+      { coordinates: [-43.722344, 172.596671] },
+      { coordinates: [-43.727788, 172.591849], name: 'Motukarara' },
+    ];
+
+    // Extract only the coordinates for drawing the path
+    const roadTripPath = roadTripPoints.map((point) => point.coordinates);
+
+    // Create an SVG layer for the route
+    const svgLayer = L.svg().addTo(map);
+    const svg = d3.select(svgLayer._container);
+    const line = d3
+      .line()
+      .curve(d3.curveCatmullRom.alpha(0.5))
+      .x((d) => map.latLngToLayerPoint(d).x)
+      .y((d) => map.latLngToLayerPoint(d).y);
+
+    // Add the path to the SVG layer
+    const path = svg
+      .append('path')
+      .datum(roadTripPath)
+      .attr('d', line)
+      .attr('stroke', '#DDDDDD')
+      .attr('stroke-width', 5)
+      .attr('stroke-linecap', 'round')
+      .attr('fill', 'none');
+
+    // Update the path as the map moves
+    map.on('moveend', updatePath);
+    updatePath();
+
+    function updatePath() {
+      const updatedPath = roadTripPath.map((latlng) => L.latLng(latlng));
+      path.datum(updatedPath).attr('d', line);
+    }
+
+    // Draw the route as you scroll
+    const scrollContainer = document.getElementById('scrollContainer');
+    const zoomLevel = 9; // Set your desired zoom level here
+
+    const carIcon = L.icon({
+      iconUrl:
+        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white"><rect x="3" y="11" width="18" height="10" rx="2" ry="2"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/><path d="M5.20711 9.5C5.84692 8.34171 7.1005 7.5 8.5 7.5H15.5C16.8995 7.5 18.1531 8.34171 18.7929 9.5"/></svg>',
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+    });
+
+    const carMarker = L.marker(roadTripPath[0], { icon: carIcon }).addTo(map);
+
+    let activeDot = null;
+    let activePopup = null;
+
+    // Update the scroll event listener
+    window.addEventListener('scroll', () => {
+      const scrollPercentage =
+        window.scrollY / (scrollContainer.scrollHeight - window.innerHeight);
+      const newPathLength = scrollPercentage * path.node().getTotalLength();
+      path.style(
+        'stroke-dasharray',
+        `${newPathLength}, ${path.node().getTotalLength()}`
+      );
+
+      // Get the current point on the path based on scroll percentage
+      const currentPoint = path.node().getPointAtLength(newPathLength);
+
+      // Convert the current point to latitude and longitude coordinates
+      const currentLatLng = map.layerPointToLatLng([
+        currentPoint.x,
+        currentPoint.y,
+      ]);
+
+      // Find the closest point to the current position
+      const closestPoint = roadTripPoints
+        .filter((point) => point.name)
+        .reduce((prev, curr) => {
+          const prevDistance = map.distance(prev.coordinates, currentLatLng);
+          const currDistance = map.distance(curr.coordinates, currentLatLng);
+          return currDistance < prevDistance ? curr : prev;
+        });
+
+      // Close the active popup and open the popup for the closest point
+      if (activePopup) {
+        activePopup.closePopup();
+      }
+      if (closestPoint.name) {
+        activePopup = L.popup({
+          closeButton: false,
+        })
+          .setLatLng(closestPoint.coordinates)
+          .setContent(`<b>${closestPoint.name}</b>`)
+          .openOn(map);
+
+        activeDot = L.circleMarker(closestPoint.coordinates, {
+          color: '#DDDDDD',
+          fillColor: '#DDDDDD',
+          fillOpacity: 1,
+          radius: 5,
+        }).addTo(map);
+      }
+
+      // Get the x coordinate of the new center
+      const centerX = currentPoint.x - xOffset * window.innerWidth;
+
+      // Convert the new center to latitude and longitude coordinates
+      const centerLatLng = map.layerPointToLatLng([centerX, currentPoint.y]);
+
+      // Set the map view with the constant zoom level
+      map.setView(centerLatLng, zoomLevel, { animate: false });
+
+      // Update the car marker position
+      carMarker.setLatLng(currentLatLng);
+    });
+  </script>
+</Layout>

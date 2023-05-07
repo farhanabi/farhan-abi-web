@@ -1,0 +1,359 @@
+---
+import { Image } from '@astrojs/image/components';
+import Layout from '../../../layouts/roadtrip.astro';
+---
+
+<head>
+  <style>
+    :global(#scrollContainer) {
+      height: 650vh;
+    }
+    @media (max-width: 768px) {
+      :global(#scrollContainer) {
+        height: 650vh;
+      }
+    }
+  </style>
+</head>
+
+<Layout
+  title="New Zealand Road Trip - Day 5 | Muhammad Farhan Abiyyullah"
+  description="Day 5 of Farhan Abi's road trip in New Zealand, exploring the outdoors and scenic drives."
+>
+  <div class="relative h-full w-full">
+    <div id="map" class="fixed w-full h-screen"></div>
+    <div
+      id="scrollContainer"
+      class="relative h-max w-full flex flex-col py-36 md:py-48 md:flex-row"
+    >
+      <div
+        id="story"
+        class="absolute text-white min-h-max h-full w-full top-0 m-auto px-8 py-36 bg-black bg-opacity-60 text-lg z-10 md:bg-opacity-70 md:w-2/3 md:mb-0 md:py-48 lg:w-1/2 xl:px-32"
+      >
+        <div class="flex flex-col min-h-max">
+          <h1 class="text-4xl font-bold mb-4">
+            New Zealand Road Trip <br class="hidden sm:block" />- Day #5
+          </h1>
+          <h2 class="text-2xl my-4 space-y-2">
+            Duntroon - Oamaru - Dunedin (~162km)
+          </h2>
+          <p class="mb-4">
+            We hit the road for Oamaru around 10AM, after soaking up some
+            chill-time at the campground. Oamaru, a neoclassical city, wowed me
+            with its architectural patterns. I'd even say it's the third most
+            photographed city (You know I didn't take many photos) in my
+            journey, after Wellington and Auckland.
+          </p>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-5/oamaru-1.jpg"
+              alt="The Anglican church in Oamaru"
+              loading="lazy"
+              width={1800}
+              height={2725}
+            />
+            <figcaption class="text-sm">
+              Fig. 1 &mdash; The Anglican church in Oamaru, an intriguing sight
+            </figcaption>
+          </figure>
+          <p class="mb-4">
+            We parked our car and strolled the city, making our legs do the
+            work. At the Steampunk HQ, we played with a wicked moving train
+            model called the Steampunk engine. The only catch? It required a $2
+            coin (hey, every penny counts!).
+          </p>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-5/oamaru-2.jpg"
+              alt="Steampunk HQ"
+              loading="lazy"
+              width={1800}
+              height={1850}
+            />
+            <figcaption class="text-sm">
+              Fig. 2 &mdash; Steampunk HQ with its Steampunk engine & airship
+            </figcaption>
+          </figure>
+          <p class="mb-4">
+            Marsha and I split up to explore; she checked out a local shop while
+            I wandered around, admiring the neo-classical vibe and visiting the
+            train station. We reunited at an amazing bookstore I'd recommend to
+            anyone visiting Oamaru.
+          </p>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-5/oamaru-3.jpg"
+              alt="A walkpath in Oamaru"
+              loading="lazy"
+              width={1790}
+              height={2540}
+            />
+            <figcaption class="text-sm">
+              Fig. 3 &mdash; The path I took in the city, not a yellow brick
+              road but close enough
+            </figcaption>
+          </figure>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-5/oamaru-4.jpg"
+              alt="A train"
+              loading="lazy"
+              width={1796}
+              height={1854}
+            />
+            <figcaption class="text-sm">
+              Fig. 4 &mdash; The train, a ride only Thomas could love
+            </figcaption>
+          </figure>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-5/oamaru-5.jpg"
+              alt="A train"
+              loading="lazy"
+              width={1795}
+              height={2892}
+            />
+            <figcaption class="text-sm">
+              Fig. 5 &mdash; The bookshop that turned bookworms into
+              book-dragons!
+            </figcaption>
+          </figure>
+          <p class="mb-4">
+            Next, we headed to Moeraki to see the famous Moeraki Boulders on the
+            beach, but unfortunately, I didn't take any photos.
+          </p>
+          <p class="mb-4">
+            Our final stop was Dunedin, a city with intriguing hilly contours
+            (not for the faint-hearted or weak-legged). We ventured to Baldwin
+            St, the world's steepest street, and tackled the calf-burning
+            "hike."
+          </p>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-5/dunedin-1.jpg"
+              alt="Baldwin St, the world's steepest street"
+              loading="lazy"
+              width={1800}
+              height={1950}
+            />
+            <figcaption class="text-sm">
+              Fig. 6 &mdash; The steepest street in the world (sweating just
+              looking at it)
+            </figcaption>
+          </figure>
+          <p class="mb-4">
+            Exhausted, Marsha dropped me off at my hostel for a well-deserved
+            night's rest, while she stayed at a nearby campground. Who knew
+            exploring could be such a workout?
+          </p>
+          <div class="flex flex-col w-full gap-y-16 py-4 md:py-16">
+            <a href="/travel/NZ/day-4">
+              <div class="flex flex-col items-start">
+                <span class="text-2xl font-bold"
+                  >Previous:<br class="block sm:hidden" /> Day #4</span
+                >
+                <span class="text-lg"> Lake Tekapo - Mt. Cook - Duntroon</span>
+              </div>
+            </a>
+            <a href="/travel/NZ/day-6">
+              <div class="flex flex-col items-end text-right">
+                <span class="text-2xl font-bold"
+                  >Next:<br class="block sm:hidden" /> Day #6</span
+                >
+                <span class="text-lg">
+                  Dunedin - Nugget Point - Slope Point - Fortrose
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- The map container -->
+      <div id="map" class="w-full h-screen md:w-2/3 lg:w-1/2"></div>
+    </div>
+  </div>
+  <script is:inline src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+  ></script>
+  <script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+  <script is:inline>
+    const calculateXOffset = () => {
+      const minWidthForOffset = 767;
+      const largeScreenWidthOffset = 0.25;
+      return window.innerWidth > minWidthForOffset ? largeScreenWidthOffset : 0;
+    };
+
+    const xOffset = calculateXOffset();
+
+    // Set the initial map view coordinates
+    const initialMapViewCoordinates = [
+      -44.85531477617524,
+      170.68597635031503 - 2.5 * xOffset,
+    ];
+
+    // Initialize the map with custom options
+    const map = L.map('map', {
+      attributionControl: false,
+      zoomControl: false,
+    }).setView(initialMapViewCoordinates, 9);
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 9,
+      className: 'map-tiles',
+    }).addTo(map);
+
+    // Replace the coordinates in the roadTripPath array with the coordinates of your road trip
+    const roadTripPoints = [
+      {
+        coordinates: [-44.85531477617524, 170.68597635031503],
+        name: 'Duntroon',
+      },
+      { coordinates: [-44.88924925725244, 170.80390215905874] },
+      { coordinates: [-44.963030398569245, 170.92658172963553] },
+      { coordinates: [-45.02094838359656, 171.0206021956032] },
+      { coordinates: [-45.1042379161478, 170.9679808047213], name: 'Oamaru' },
+      { coordinates: [-45.10118471827591, 170.93821361166852] },
+      { coordinates: [-45.13414900834957, 170.86473148770332] },
+      { coordinates: [-45.157993202909395, 170.8423611936738] },
+      { coordinates: [-45.21225418172355, 170.80211678521246] },
+      { coordinates: [-45.238391285131094, 170.78023886101113] },
+      { coordinates: [-45.29651421757212, 170.81553000387808] },
+      { coordinates: [-45.34613908704402, 170.8199001477968], name: 'Moeraki' },
+      { coordinates: [-45.397931633423674, 170.83950146875955] },
+      { coordinates: [-45.42577851112674, 170.81721698913424] },
+      { coordinates: [-45.458727785574204, 170.80888301305956] },
+      { coordinates: [-45.46887470571411, 170.77660820971695] },
+      { coordinates: [-45.48498501719869, 170.7148405412816] },
+      { coordinates: [-45.545979244602336, 170.70394843957345] },
+      { coordinates: [-45.58000400563769, 170.69061755140308] },
+      { coordinates: [-45.60065547384097, 170.65247744082012] },
+      { coordinates: [-45.616049166901995, 170.64218485057378] },
+      { coordinates: [-45.63367223935394, 170.59853007125307] },
+      { coordinates: [-45.67500116369721, 170.57085814238602] },
+      { coordinates: [-45.695315871485015, 170.56768587218943] },
+      { coordinates: [-45.786978857701, 170.5508505086822] },
+      { coordinates: [-45.79571830547606, 170.5191303070124] },
+      { coordinates: [-45.80843662672038, 170.52030099949081] },
+      { coordinates: [-45.825812754223904, 170.5175342052979] },
+      { coordinates: [-45.82527441363416, 170.5173047586408] },
+      { coordinates: [-45.83465539788008, 170.50407781103192] },
+      { coordinates: [-45.84008577136372, 170.51635997666872] },
+      { coordinates: [-45.85160299110252, 170.50880172089222] },
+      { coordinates: [-45.85592858519216, 170.51647390970368] },
+      {
+        coordinates: [-45.87757594188441, 170.50440476679603],
+        name: 'Dunedin',
+      },
+    ];
+
+    // Extract only the coordinates for drawing the path
+    const roadTripPath = roadTripPoints.map((point) => point.coordinates);
+
+    // Create an SVG layer for the route
+    const svgLayer = L.svg().addTo(map);
+    const svg = d3.select(svgLayer._container);
+    const line = d3
+      .line()
+      .curve(d3.curveCatmullRom.alpha(0.5))
+      .x((d) => map.latLngToLayerPoint(d).x)
+      .y((d) => map.latLngToLayerPoint(d).y);
+
+    // Add the path to the SVG layer
+    const path = svg
+      .append('path')
+      .datum(roadTripPath)
+      .attr('d', line)
+      .attr('stroke', '#DDDDDD')
+      .attr('stroke-width', 5)
+      .attr('stroke-linecap', 'round')
+      .attr('fill', 'none');
+
+    // Update the path as the map moves
+    map.on('moveend', updatePath);
+    updatePath();
+
+    function updatePath() {
+      const updatedPath = roadTripPath.map((latlng) => L.latLng(latlng));
+      path.datum(updatedPath).attr('d', line);
+    }
+
+    // Draw the route as you scroll
+    const scrollContainer = document.getElementById('scrollContainer');
+    const zoomLevel = 9; // Set your desired zoom level here
+
+    const carIcon = L.icon({
+      iconUrl:
+        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white"><rect x="3" y="11" width="18" height="10" rx="2" ry="2"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/><path d="M5.20711 9.5C5.84692 8.34171 7.1005 7.5 8.5 7.5H15.5C16.8995 7.5 18.1531 8.34171 18.7929 9.5"/></svg>',
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+    });
+
+    const carMarker = L.marker(roadTripPath[0], { icon: carIcon }).addTo(map);
+
+    let activeDot = null;
+    let activePopup = null;
+
+    // Update the scroll event listener
+    window.addEventListener('scroll', () => {
+      const scrollPercentage =
+        window.scrollY / (scrollContainer.scrollHeight - window.innerHeight);
+      const newPathLength = scrollPercentage * path.node().getTotalLength();
+      path.style(
+        'stroke-dasharray',
+        `${newPathLength}, ${path.node().getTotalLength()}`
+      );
+
+      // Get the current point on the path based on scroll percentage
+      const currentPoint = path.node().getPointAtLength(newPathLength);
+
+      // Convert the current point to latitude and longitude coordinates
+      const currentLatLng = map.layerPointToLatLng([
+        currentPoint.x,
+        currentPoint.y,
+      ]);
+
+      // Find the closest point to the current position
+      const closestPoint = roadTripPoints
+        .filter((point) => point.name)
+        .reduce((prev, curr) => {
+          const prevDistance = map.distance(prev.coordinates, currentLatLng);
+          const currDistance = map.distance(curr.coordinates, currentLatLng);
+          return currDistance < prevDistance ? curr : prev;
+        });
+
+      // Close the active popup and open the popup for the closest point
+      if (activePopup) {
+        activePopup.closePopup();
+      }
+      if (closestPoint.name) {
+        activePopup = L.popup({
+          closeButton: false,
+        })
+          .setLatLng(closestPoint.coordinates)
+          .setContent(`<b>${closestPoint.name}</b>`)
+          .openOn(map);
+
+        activeDot = L.circleMarker(closestPoint.coordinates, {
+          color: '#DDDDDD',
+          fillColor: '#DDDDDD',
+          fillOpacity: 1,
+          radius: 5,
+        }).addTo(map);
+      }
+
+      // Get the x coordinate of the new center
+      const centerX = currentPoint.x - xOffset * window.innerWidth;
+
+      // Convert the new center to latitude and longitude coordinates
+      const centerLatLng = map.layerPointToLatLng([centerX, currentPoint.y]);
+
+      // Set the map view with the constant zoom level
+      map.setView(centerLatLng, zoomLevel, { animate: false });
+
+      // Update the car marker position
+      carMarker.setLatLng(currentLatLng);
+    });
+  </script>
+</Layout>

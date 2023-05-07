@@ -56,4 +56,8 @@
   h3 {
     @apply text-2xl font-semibold tracking-tight;
   }
+
+  * {
+    @apply box-border;
+  }
 }

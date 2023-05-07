@@ -1,0 +1,391 @@
+---
+import { Image } from '@astrojs/image/components';
+import Layout from '../../../layouts/roadtrip.astro';
+---
+
+<head>
+  <style>
+    :global(#scrollContainer) {
+      height: 425vh;
+    }
+    @media (max-width: 768px) {
+      :global(#scrollContainer) {
+        height: 450vh;
+      }
+    }
+  </style>
+</head>
+
+<Layout
+  title="New Zealand Road Trip - Day 7 | Muhammad Farhan Abiyyullah"
+  description="Day 7 of Farhan Abi's road trip in New Zealand, exploring the outdoors and scenic drives."
+>
+  <div class="relative h-full w-full">
+    <div id="map" class="fixed w-full h-screen"></div>
+    <div
+      id="scrollContainer"
+      class="relative h-max w-full flex flex-col py-36 md:py-48 md:flex-row"
+    >
+      <div
+        id="story"
+        class="absolute text-white min-h-max h-full w-full top-0 m-auto px-8 py-36 bg-black bg-opacity-60 text-lg z-10 md:bg-opacity-70 md:w-2/3 md:mb-0 md:py-48 lg:w-1/2 xl:px-32"
+      >
+        <div class="flex flex-col min-h-max">
+          <h1 class="text-4xl font-bold mb-4">
+            New Zealand Road Trip <br class="hidden sm:block" />- Day #7
+          </h1>
+          <h2 class="text-2xl my-4 space-y-2">
+            Fortrose - Bluff - Invercargill - Te Anau - Milford Sound (~399km)
+          </h2>
+          <p class="mb-4">
+            I woke up to sunny skies but shivered as the temperature read a mere
+            6 degrees Celsius. I guess it was the strong southern wind sweeping
+            through the camp that made it feel extra chilly for a tropical
+            person like me.
+          </p>
+
+          <p class="mb-4">
+            We began our day heading south to Bluff, the southernmost town in
+            New Zealand, in hopes of enjoying oysters for brunch. Unfortunately,
+            it wasn't the season for oysters, and the restaurant directed us to
+            a seafood place in Invercargill instead. So off we went, fueled by
+            the promise of good food.
+          </p>
+
+          <p class="mb-4">
+            After savoring oysters in Invercargill, we drove towards Te Anau and
+            continued straight to Milford Sound. I have to say, the Te Anau -
+            Milford Sound route was my favorite part of this road trip. The best
+            part? I didn't take any pictures because the stunning sights
+            completely captivated me. But trust me, it was unbelievably
+            beautiful.
+          </p>
+
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-7/milford-sound.jpg"
+              alt="Milford Sound"
+              loading="lazy"
+              width={1800}
+              height={4000}
+            />
+            <figcaption class="text-sm">
+              Fig. 1 &mdash; The only picture I managed to snap that day:
+              Milford Sound's majestic cliff in a portrait orientation to extend
+              this day's narrative.
+            </figcaption>
+          </figure>
+
+          <p class="mb-4">
+            We arrived at Milford Sound a bit late, around 5 PM, and found that
+            there were no more cruises for the day. So, we had to wait until the
+            next day to hop on one. In the meantime, we drove about 42 km to the
+            nearest campground called Cascade Creek and set up camp for the
+            night there.
+          </p>
+          <figure class="mb-8 space-y-4">
+            <Image
+              src="/images/travel/NZ/day-7/kea.jpg"
+              alt="A kea"
+              loading="lazy"
+              width={1842}
+              height={4096}
+            />
+            <figcaption class="text-sm">
+              Fig. 2 &mdash; A friendly Kea greets us during our journey to the
+              campground. It's also in portrait to extend the narrative.
+            </figcaption>
+          </figure>
+          <div class="flex flex-col w-full gap-y-16 py-4 md:py-16">
+            <a href="/travel/NZ/day-6">
+              <div class="flex flex-col items-start">
+                <span class="text-2xl font-bold"
+                  >Previous:<br class="block sm:hidden" /> Day #6</span
+                >
+                <span class="text-lg">
+                  Dunedin - Nugget Point - Slope Point - Fortrose
+                </span>
+              </div>
+            </a>
+            <!-- <a href="/travel/NZ/day-8">
+              <div class="flex flex-col items-end text-right">
+                <span class="text-2xl font-bold"
+                  >Next:<br class="block sm:hidden" /> Day #8</span
+                >
+                <span class="text-lg">
+                  Motukarara - Christchurch - Lake Tekapo
+                </span>
+              </div>
+            </a> -->
+          </div>
+        </div>
+      </div>
+      <!-- The map container -->
+      <div id="map" class="w-full h-screen md:w-2/3 lg:w-1/2"></div>
+    </div>
+  </div>
+  <script is:inline src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+  ></script>
+  <script is:inline src="https://d3js.org/d3.v7.min.js"></script>
+  <script is:inline>
+    const calculateXOffset = () => {
+      const minWidthForOffset = 767;
+      const largeScreenWidthOffset = 0.25;
+      return window.innerWidth > minWidthForOffset ? largeScreenWidthOffset : 0;
+    };
+
+    const xOffset = calculateXOffset();
+
+    // Set the initial map view coordinates
+    const initialMapViewCoordinates = [
+      -46.57494039289994,
+      168.7965949584001 - 2.5 * xOffset,
+    ];
+
+    // Initialize the map with custom options
+    const map = L.map('map', {
+      attributionControl: false,
+      zoomControl: false,
+    }).setView(initialMapViewCoordinates, 9);
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 9,
+      className: 'map-tiles',
+    }).addTo(map);
+
+    // Replace the coordinates in the roadTripPath array with the coordinates of your road trip
+    const roadTripPoints = [
+      {
+        coordinates: [-46.57494039289994, 168.7965949584001],
+        name: 'Fortrose',
+      },
+      { coordinates: [-46.55136398762807, 168.79205649746166] },
+      { coordinates: [-46.54327498986322, 168.7633314220943] },
+      { coordinates: [-46.52538157945174, 168.74048707081786] },
+      { coordinates: [-46.51121826746175, 168.74003470742625] },
+      { coordinates: [-46.49540741150516, 168.70582303900494] },
+      { coordinates: [-46.48024961558761, 168.7107153510709] },
+      { coordinates: [-46.47126522481099, 168.7009307269389] },
+      { coordinates: [-46.45370500731116, 168.45875318806736] },
+      { coordinates: [-46.47121657122606, 168.45725776465963] },
+      { coordinates: [-46.47327638491038, 168.40790879220498] },
+      { coordinates: [-46.50313492294023, 168.36828007190047] },
+      { coordinates: [-46.522688526578605, 168.31369711751884] },
+      { coordinates: [-46.56640138282357, 168.29949059514553] },
+      { coordinates: [-46.59415362019239, 168.31519254092655] },
+      { coordinates: [-46.61498249549178, 168.33871738296563], name: 'Bluff' },
+      { coordinates: [-46.59415362019239, 168.31519254092655] },
+      { coordinates: [-46.56640138282357, 168.29949059514553] },
+      { coordinates: [-46.522688526578605, 168.31369711751884] },
+      { coordinates: [-46.50313492294023, 168.36828007190047] },
+      { coordinates: [-46.47327638491038, 168.40790879220498] },
+      { coordinates: [-46.44711901269286, 168.35898155310113] },
+      { coordinates: [-46.42683941095915, 168.35051165719187] },
+      {
+        coordinates: [-46.41785726784399, 168.34741940969477],
+        name: 'Invercargill',
+      },
+      { coordinates: [-46.307852727711776, 168.34715240913914] },
+      { coordinates: [-46.302474095166275, 168.34157263014498] },
+      { coordinates: [-46.206193418612784, 168.34097402503554] },
+      { coordinates: [-46.19825241930239, 168.33193899015814] },
+      { coordinates: [-46.12525036068903, 168.32170304542913] },
+      { coordinates: [-46.078248562948765, 168.33378422569686] },
+      { coordinates: [-46.06197974056096, 168.32487336882804] },
+      { coordinates: [-46.02090565565412, 168.33347127445015] },
+      { coordinates: [-45.97195498920257, 168.33171301953098] },
+      { coordinates: [-45.90043084628883, 168.36336503502642] },
+      { coordinates: [-45.8941887098009, 168.3784206060719] },
+      { coordinates: [-45.84623463830662, 168.3787409373707] },
+      { coordinates: [-45.823246634008534, 168.392194851922] },
+      { coordinates: [-45.80504013927058, 168.40996799154604] },
+      { coordinates: [-45.767142789355475, 168.44821003016764] },
+      { coordinates: [-45.71747341123248, 168.4341736307765] },
+      { coordinates: [-45.71679697445554, 168.39507143083614] },
+      { coordinates: [-45.65952033529516, 168.21849650432293] },
+      { coordinates: [-45.56611265206846, 168.0897489179092] },
+      { coordinates: [-45.5589182304137, 168.01658065122254] },
+      { coordinates: [-45.53937495442033, 167.9615416143128] },
+      { coordinates: [-45.54371849176234, 167.89487461182372] },
+      { coordinates: [-45.51633221600135, 167.7817079164072] },
+      { coordinates: [-45.464074349692105, 167.79205122971703] },
+      { coordinates: [-45.435251424775934, 167.7773224733532] },
+      { coordinates: [-45.4205623849545, 167.72460902952457], name: 'Te Anau' },
+      { coordinates: [-45.39885132254788, 167.7586865143406] },
+      { coordinates: [-45.35277217109976, 167.76881945209968] },
+      { coordinates: [-45.19439406667808, 167.82801714111332] },
+      { coordinates: [-45.19852801635586, 167.8584159543906] },
+      { coordinates: [-45.1436347695786, 167.9016142679951] },
+      { coordinates: [-45.13541190743485, 167.94496006074388] },
+      { coordinates: [-45.12562943687331, 167.94602668576925] },
+      { coordinates: [-45.12525315451761, 167.94549337325563] },
+      { coordinates: [-45.064740945441294, 167.99161757289116] },
+      { coordinates: [-45.05089339858041, 168.01064418941337] },
+      { coordinates: [-45.04294990971169, 168.00747308665967] },
+      { coordinates: [-45.029995127471, 168.01156391870165] },
+      { coordinates: [-45.00248369198213, 168.00954594422203] },
+      { coordinates: [-45.00085296985584, 168.01300532904423] },
+      { coordinates: [-44.94844132421552, 168.0158881497241] },
+      { coordinates: [-44.92140303067503, 168.04241033730295] },
+      { coordinates: [-44.90792915880756, 168.04990567108442] },
+      { coordinates: [-44.90731663502417, 168.067490877264] },
+      { coordinates: [-44.87749925540322, 168.09747221238652] },
+      { coordinates: [-44.84971025496465, 168.1049675461603] },
+      { coordinates: [-44.815568648618765, 168.11505741855783] },
+      { coordinates: [-44.80934565816106, 168.10740912123399] },
+      { coordinates: [-44.8137654483914, 168.0903533320364] },
+      { coordinates: [-44.81703300031145, 168.0885108521987] },
+      { coordinates: [-44.81677160299043, 168.0651113582753] },
+      { coordinates: [-44.81500713995076, 168.0583863068679] },
+      { coordinates: [-44.81219695772356, 168.04014575647517] },
+      { coordinates: [-44.80152988244278, 168.0217793544235] },
+      { coordinates: [-44.79002370328486, 168.02051524527184] },
+      { coordinates: [-44.775066584872896, 168.00671049699673] },
+      { coordinates: [-44.76471067636815, 167.9971073886066] },
+      { coordinates: [-44.76341605724885, 167.97316039679836] },
+      { coordinates: [-44.75996749088243, 167.96215096353876] },
+      { coordinates: [-44.741595700426934, 167.95415833230675] },
+      { coordinates: [-44.735999594883914, 167.94132904389394] },
+      { coordinates: [-44.70395545527563, 167.97072764168652] },
+      { coordinates: [-44.67921187561415, 167.9635233184609] },
+      {
+        coordinates: [-44.6681380889387, 167.92732562565206],
+        name: 'Milford Sound',
+      },
+      { coordinates: [-44.67921187561415, 167.9635233184609] },
+      { coordinates: [-44.70395545527563, 167.97072764168652] },
+      { coordinates: [-44.735999594883914, 167.94132904389394] },
+      { coordinates: [-44.741595700426934, 167.95415833230675] },
+      { coordinates: [-44.75996749088243, 167.96215096353876] },
+      { coordinates: [-44.76341605724885, 167.97316039679836] },
+      { coordinates: [-44.76471067636815, 167.9971073886066] },
+      { coordinates: [-44.775066584872896, 168.00671049699673] },
+      { coordinates: [-44.79002370328486, 168.02051524527184] },
+      { coordinates: [-44.80152988244278, 168.0217793544235] },
+      { coordinates: [-44.81219695772356, 168.04014575647517] },
+      { coordinates: [-44.81500713995076, 168.0583863068679] },
+      { coordinates: [-44.81677160299043, 168.0651113582753] },
+      { coordinates: [-44.81703300031145, 168.0885108521987] },
+      { coordinates: [-44.8137654483914, 168.0903533320364] },
+      { coordinates: [-44.80934565816106, 168.10740912123399] },
+      { coordinates: [-44.815568648618765, 168.11505741855783] },
+      { coordinates: [-44.84971025496465, 168.1049675461603] },
+      { coordinates: [-44.87749925540322, 168.09747221238652] },
+      {
+        coordinates: [-44.893800862065525, 168.0842677906961],
+        name: 'Cascade Creek',
+      },
+    ];
+
+    // Extract only the coordinates for drawing the path
+    const roadTripPath = roadTripPoints.map((point) => point.coordinates);
+
+    // Create an SVG layer for the route
+    const svgLayer = L.svg().addTo(map);
+    const svg = d3.select(svgLayer._container);
+    const line = d3
+      .line()
+      .curve(d3.curveCatmullRom.alpha(0.5))
+      .x((d) => map.latLngToLayerPoint(d).x)
+      .y((d) => map.latLngToLayerPoint(d).y);
+
+    // Add the path to the SVG layer
+    const path = svg
+      .append('path')
+      .datum(roadTripPath)
+      .attr('d', line)
+      .attr('stroke', '#DDDDDD')
+      .attr('stroke-width', 5)
+      .attr('stroke-linecap', 'round')
+      .attr('fill', 'none');
+
+    // Update the path as the map moves
+    map.on('moveend', updatePath);
+    updatePath();
+
+    function updatePath() {
+      const updatedPath = roadTripPath.map((latlng) => L.latLng(latlng));
+      path.datum(updatedPath).attr('d', line);
+    }
+
+    // Draw the route as you scroll
+    const scrollContainer = document.getElementById('scrollContainer');
+    const zoomLevel = 9; // Set your desired zoom level here
+
+    const carIcon = L.icon({
+      iconUrl:
+        'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white"><rect x="3" y="11" width="18" height="10" rx="2" ry="2"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/><path d="M5.20711 9.5C5.84692 8.34171 7.1005 7.5 8.5 7.5H15.5C16.8995 7.5 18.1531 8.34171 18.7929 9.5"/></svg>',
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+    });
+
+    const carMarker = L.marker(roadTripPath[0], { icon: carIcon }).addTo(map);
+
+    let activeDot = null;
+    let activePopup = null;
+
+    // Update the scroll event listener
+    window.addEventListener('scroll', () => {
+      const scrollPercentage =
+        window.scrollY / (scrollContainer.scrollHeight - window.innerHeight);
+      const newPathLength = scrollPercentage * path.node().getTotalLength();
+      path.style(
+        'stroke-dasharray',
+        `${newPathLength}, ${path.node().getTotalLength()}`
+      );
+
+      // Get the current point on the path based on scroll percentage
+      const currentPoint = path.node().getPointAtLength(newPathLength);
+
+      // Convert the current point to latitude and longitude coordinates
+      const currentLatLng = map.layerPointToLatLng([
+        currentPoint.x,
+        currentPoint.y,
+      ]);
+
+      // Find the closest point to the current position
+      const closestPoint = roadTripPoints
+        .filter((point) => point.name)
+        .reduce((prev, curr) => {
+          const prevDistance = map.distance(prev.coordinates, currentLatLng);
+          const currDistance = map.distance(curr.coordinates, currentLatLng);
+          return currDistance < prevDistance ? curr : prev;
+        });
+
+      // Close the active popup and open the popup for the closest point
+      if (activePopup) {
+        activePopup.closePopup();
+      }
+      if (closestPoint.name) {
+        activePopup = L.popup({
+          closeButton: false,
+        })
+          .setLatLng(closestPoint.coordinates)
+          .setContent(`<b>${closestPoint.name}</b>`)
+          .openOn(map);
+
+        activeDot = L.circleMarker(closestPoint.coordinates, {
+          color: '#DDDDDD',
+          fillColor: '#DDDDDD',
+          fillOpacity: 1,
+          radius: 5,
+        }).addTo(map);
+      }
+
+      // Get the x coordinate of the new center
+      const centerX = currentPoint.x - xOffset * window.innerWidth;
+
+      // Convert the new center to latitude and longitude coordinates
+      const centerLatLng = map.layerPointToLatLng([centerX, currentPoint.y]);
+
+      // Set the map view with the constant zoom level
+      map.setView(centerLatLng, zoomLevel, { animate: false });
+
+      // Update the car marker position
+      carMarker.setLatLng(currentLatLng);
+    });
+  </script>
+</Layout>
