@@ -1,45 +1,77 @@
-<section id="travel" class="bg-neutral-900 flex justify-center">
+---
+import { Image } from '@astrojs/image/components';
+
+const posts = [
+  {
+    title: 'Day 1 - Christchurch to Springfield',
+    image: '/images/travel/NZ/day-1/arthurs-pass-2.jpg',
+    url: '/travel/NZ/day-1',
+  },
+  {
+    title: 'Day 2 - Springfield to Motukarara',
+    image: '/images/travel/NZ/day-2/shammara-alpacas-1.jpg',
+    url: '/travel/NZ/day-2',
+  },
+  {
+    title: 'Day 3 - Motukarara to Lake Tekapo',
+    image: '/images/travel/NZ/day-3/lake-tekapo-1.jpg',
+    url: '/travel/NZ/day-3',
+  },
+  {
+    title: 'Day 4 - Lake Tekapo to Duntroon',
+    image: '/images/travel/NZ/day-4/mt-cook-2.jpg',
+    url: '/travel/NZ/day-4',
+  },
+  {
+    title: 'Day 5 - Duntroon to Dunedin',
+    image: '/images/travel/NZ/day-5/oamaru-2.jpg',
+    url: '/travel/NZ/day-5',
+  },
+  {
+    title: 'Day 6 - Dunedin to Fortrose',
+    image: '/images/travel/NZ/day-6/nugget-point-1.jpg',
+    url: '/travel/NZ/day-6',
+  },
+  {
+    title: 'Day 7 - Fortrose to Milford Sound',
+    image: '/images/travel/NZ/day-7/milford-sound.jpg',
+    url: '/travel/NZ/day-7',
+  },
+];
+---
+
+<section
+  id="travel-nz"
+  class="bg-neutral-900 ax-w-screen-2xl flex justify-center py-32 px-8 sm:p-32"
+>
   <div
-    class="flex flex-col max-w-screen-2xl px-0 py-16 justify-center sm:px-16 lg:justify-center lg:flex-row"
+    class="flex flex-col px-4 place-content-center items-start tracking-wide gap-y-8 text-white sm:px-0"
   >
-    <div
-      class="flex flex-col px-8 place-content-center items-start tracking-wide gap-y-8 text-white sm:px-0"
-    >
-      <h2 class="text-left text-4xl md:text-5xl">
-        Explore New Zealand with Farhan
-      </h2>
-      <p class="text-lg md:text-xl">
-        Join me on an epic journey through the breathtaking landscapes of New
-        Zealand! Discover hidden gems, laugh at my misadventures, and immerse
-        yourself in the beauty of Aotearoa.
-      </p>
-      <ul class="list-disc list-inside pl-4">
-        <li>
-          <a href="/day1" class="text-blue-500 hover:text-blue-300"
-            >Day 1: Christchurch to Springfield</a>
-        </li>
-        <li>
-          <a href="/day2" class="text-blue-500 hover:text-blue-300"
-            >Day 2: Springfield to Motukarara</a>
-        </li>
-        <li>
-          <a href="/day3" class="text-blue-500 hover:text-blue-300"
-            >Day 3: Motukarara to Lake Tekapo</a>
-        </li>
-        <li>
-          <a href="/day4" class="text-blue-500 hover:text-blue-300"
-            >Day 4: Lake Tekapo to Duntroon</a>
-        </li>
-        <li>
-          <a href="/day5" class="text-blue-500 hover:text-blue-300"
-            >Day 5: Duntroon to Oamaru & Dunedin</a>
-        </li>
-      </ul>
-      <a
-        href="/travel-stories"
-        class="bg-blue-500 text-white py-2 px-4 mt-4 rounded-md hover:bg-blue-400"
-        >Dive into my New Zealand travel stories now!</a
-      >
+    <h2 class="text-left text-4xl md:text-5xl">Travel: NZ Road Trip</h2>
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:sm:grid-cols-3">
+      {
+        posts.map(({ title, image, url }) => (
+          <a href={url} class="no-underline">
+            <div class="relative h-full p-8 bg-neutral-600 rounded-2xl overflow-hidden lg:p-16">
+              <div class="absolute inset-0 filter mix-blend-multiply">
+                <Image
+                  src={image}
+                  alt={title}
+                  loading="lazy"
+                  class="w-full h-full object-cover"
+                  width={480}
+                  height={200}
+                />
+              </div>
+              <div class="relative flex flex-col justify-between gap-y-8 no-underline">
+                <div class="flex flex-col gap-y-2">
+                  <h3 class="text-3xl">{title}</h3>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))
+      }
     </div>
   </div>
 </section>

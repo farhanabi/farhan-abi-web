@@ -19,6 +19,7 @@ import Layout from '../../../layouts/roadtrip.astro';
 <Layout
   title="Day 1 - New Zealand Road Trip: Christchurch to Springfield | Muhammad Farhan Abiyyullah"
   description="Day 1 of Farhan Abi's road trip in New Zealand, embark on a fun and exciting road trip through New Zealand! Follow our hilarious journey from Christchurch to Springfield, complete with breathtaking scenery, mishaps, and unforgettable moments."
+  image="/images/travel/NZ/day-1/arthurs-pass-2.jpg"
 >
   <div class="relative h-full w-full">
     <div id="map" class="fixed w-full h-screen"></div>
@@ -37,9 +38,13 @@ import Layout from '../../../layouts/roadtrip.astro';
           <p class="p-4 my-4 bg-black block text-base md:hidden">
             Hey there, mobile readers! For an even better experience, I
             recommend switching to a <b>desktop</b> device to read this story. You'll
-            get a smoother and more visible map, making your virtual journey with
-            me even more enjoyable. But, no pressure! It's all up to you. Happy reading!
-            :)
+            get a smoother performance and a more visible map, making your virtual
+            journey with me even more enjoyable. But, no pressure! It's all up to
+            you. Happy reading! :)
+            <br /><br />
+            <button class="underline" id="shareButton">
+              Share this to see in desktop
+            </button>
           </p>
           <h2 class="text-2xl my-4 space-y-2">
             Christchurch - Arthur's Pass Village - Springfield (231km-ish)
@@ -297,6 +302,23 @@ import Layout from '../../../layouts/roadtrip.astro';
 
       // Update the car marker position
       carMarker.setLatLng(currentLatLng);
+    });
+
+    // Handle share button click
+    const shareButton = document.getElementById('shareButton');
+    shareButton.addEventListener('click', () => {
+      if (navigator.share) {
+        navigator
+          .share({
+            title: 'New Zealand Road Trip - Day #1',
+            text: "Day 1 of Farhan Abi's road trip in New Zealand, embark on a fun and exciting road trip through New Zealand! Follow our hilarious journey from Christchurch to Springfield, complete with breathtaking scenery, mishaps, and unforgettable moments.",
+            url: 'https://farhanabi.com/travel/NZ/day-1',
+          })
+          .then(() => console.log('Successful share'))
+          .catch((error) => console.log('Error sharing', error));
+      } else {
+        console.log('Share not supported on this browser, do nothing');
+      }
     });
   </script>
 </Layout>
