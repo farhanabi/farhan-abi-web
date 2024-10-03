@@ -5,12 +5,29 @@ import Layout from '../../../layouts/roadtrip.astro';
 
 <head>
   <style>
-    :global(#scrollContainer) {
-      height: 325vh;
+    #scrollContainer {
+      min-height: 100vh;
     }
-    @media (max-width: 768px) {
-      :global(#scrollContainer) {
-        height: 450vh;
+    #story {
+      position: relative !important;
+      height: auto !important;
+    }
+    #map {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+    @media (min-width: 768px) {
+      #story {
+        width: 66.666667%;
+      }
+    }
+    @media (min-width: 1024px) {
+      #story {
+        width: 50%;
       }
     }
   </style>
@@ -21,15 +38,12 @@ import Layout from '../../../layouts/roadtrip.astro';
   description="Day 1 of Farhan Abi's road trip in New Zealand, embark on a fun and exciting road trip through New Zealand! Follow our hilarious journey from Christchurch to Springfield, complete with breathtaking scenery, mishaps, and unforgettable moments."
   image="/images/travel/NZ/day-1/arthurs-pass-2.jpg"
 >
-  <div class="relative h-full w-full">
-    <div id="map" class="fixed w-full h-screen"></div>
-    <div
-      id="scrollContainer"
-      class="relative h-max w-full flex flex-col py-36 md:py-48 md:flex-row"
-    >
+  <div class="relative w-full">
+    <div id="map" class="w-full h-screen"></div>
+    <div id="scrollContainer" class="relative w-full">
       <div
         id="story"
-        class="absolute text-white min-h-max h-full w-full top-0 m-auto px-8 py-36 bg-black bg-opacity-60 text-lg z-10 md:bg-opacity-70 md:w-2/3 md:mb-0 md:py-48 lg:w-1/2 xl:px-32"
+        class="text-white px-8 py-36 bg-black bg-opacity-60 text-lg z-10 md:bg-opacity-70 xl:px-32"
       >
         <div class="flex flex-col min-h-max">
           <h1 class="text-4xl font-bold mb-4">
@@ -131,8 +145,6 @@ import Layout from '../../../layouts/roadtrip.astro';
           </div>
         </div>
       </div>
-      <!-- The map container -->
-      <div class="w-full h-screen md:w-2/3 lg:w-1/2"></div>
     </div>
   </div>
   <script is:inline src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
