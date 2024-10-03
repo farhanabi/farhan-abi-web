@@ -5,36 +5,43 @@ const posts = [
   {
     title: 'Day 1 - Christchurch to Springfield',
     image: '/images/travel/NZ/day-1/arthurs-pass-2.jpg',
+    alt: "Arthur's Pass",
     url: '/travel/NZ/day-1',
   },
   {
     title: 'Day 2 - Springfield to Motukarara',
     image: '/images/travel/NZ/day-2/shammara-alpacas-1.jpg',
+    alt: 'Shammara Alpacas',
     url: '/travel/NZ/day-2',
   },
   {
     title: 'Day 3 - Motukarara to Lake Tekapo',
     image: '/images/travel/NZ/day-3/lake-tekapo-1.jpg',
+    alt: 'Lake Tekapo',
     url: '/travel/NZ/day-3',
   },
   {
     title: 'Day 4 - Lake Tekapo to Duntroon',
     image: '/images/travel/NZ/day-4/mt-cook-2.jpg',
+    alt: 'Mount Cook',
     url: '/travel/NZ/day-4',
   },
   {
     title: 'Day 5 - Duntroon to Dunedin',
     image: '/images/travel/NZ/day-5/oamaru-2.jpg',
+    alt: 'Oamaru',
     url: '/travel/NZ/day-5',
   },
   {
     title: 'Day 6 - Dunedin to Fortrose',
     image: '/images/travel/NZ/day-6/nugget-point-1.jpg',
+    alt: 'Nugget Point',
     url: '/travel/NZ/day-6',
   },
   {
     title: 'Day 7 - Fortrose to Milford Sound',
     image: '/images/travel/NZ/day-7/milford-sound.jpg',
+    alt: 'Milford Sound',
     url: '/travel/NZ/day-7',
   },
 ];
@@ -50,13 +57,13 @@ const posts = [
     <h2 class="text-left text-4xl md:text-5xl">Travel: NZ Road Trip</h2>
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:sm:grid-cols-3">
       {
-        posts.map(({ title, image, url }) => (
+        posts.map(({ title, image, url, alt }) => (
           <a href={url} class="no-underline">
             <div class="relative h-full p-8 bg-neutral-600 rounded-2xl overflow-hidden lg:p-16">
               <div class="absolute inset-0 filter mix-blend-multiply">
                 <Image
                   src={image}
-                  alt={title}
+                  alt={alt}
                   loading="lazy"
                   class="w-full h-full object-cover"
                   width={480}
