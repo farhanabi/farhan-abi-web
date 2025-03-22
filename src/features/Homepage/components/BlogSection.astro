@@ -1,5 +1,16 @@
 ---
-const posts = (await Astro.glob('/**/*.mdx')).sort((a, b) =>
+const matches = import.meta.glob('/**/*.mdx', { eager: true }) as Record<string, {
+  frontmatter: {
+    title: string;
+    publishedAt: string;
+    description: string,
+    image: string,
+    imageAlt: string,
+    minutesRead: string,
+  };
+  url: string;
+}>;
+const posts = Object.values(matches).sort((a, b) =>
   new Date(b.frontmatter.publishedAt) > new Date(a.frontmatter.publishedAt)
     ? 1
     : -1
